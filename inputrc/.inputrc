@@ -1,0 +1,30 @@
+$include /etc/inputrc
+#set bell-style audible
+set bell-style visible
+set visible-stats on
+set page-completions off
+set mark-symlinked-directories on
+set show-all-if-ambiguous on
+set colored-stats on
+
+set editing-mode vi
+
+set show-mode-in-prompt on
+set vi-cmd-mode-string +
+set vi-ins-mode-string -
+
+$if mode=vi
+set keymap vi-command
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+j:history-search-forward
+k:history-search-backward
+" s":"Isudo jkA"
+" l":"A| less"
+set keymap vi-insert
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+Control-l:clear-screen
+"jk":vi-movement-mode
+"kj":vi-movement-mode
+$endif
