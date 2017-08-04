@@ -100,7 +100,7 @@ date-alt = %A, %d %B %Y %H:%M:%S
 [module/volume]
 type = custom/script
 interval = 2
-exec = ~/.config/i3/scripts/pavolume.sh
+exec = ~/.config/i3/scripts/pavolume.sh 2>/dev/null
 format = <label>
 label = %output%
 label-font = 1
