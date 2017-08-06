@@ -31,6 +31,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 setxkbmap -layout us,gr -option grp:shifts_toggle
+xset s 240 60
+xset dpms 900 900 900
 xset b 6 760 100
 
 mkdir -p ~/.config/i3
