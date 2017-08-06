@@ -98,6 +98,12 @@ bindsym $mod+g exec chromium --incognito
 bindsym $mod+p exec pcmanfm
 bindsym $mod+i exec tor-browser-en
 bindsym $mod+t exec urxvt -e bash -i -c "vim"
+bindsym $mod+Shift+F10 exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+bindsym --release $mod+F10 exec scrot --select $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+bindsym $mod+Mod1+F10 exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+bindsym $mod+Shift+Print exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+bindsym --release $mod+Print exec scrot --select $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+bindsym $mod+Mod1+Print exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/.config/i3/scripts/pavolume.sh --up
 bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/.config/i3/scripts/pavolume.sh --down
@@ -132,8 +138,7 @@ for_window [class="Pavucontrol"] floating enable
 exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id polybar top
 exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay -i 0.99 -b
-exec --no-startup-id dunst &
-exec --no-startup-id redshift-gtk &
+exec --no-startup-id redshift-gtk
 exec --no-startup-id xss-lock -- i3exit lock
 
 #=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#
