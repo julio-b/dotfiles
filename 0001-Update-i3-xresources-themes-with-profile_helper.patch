@@ -1,0 +1,29 @@
+From 1871444e3a1890096959555c554671020a768e13 Mon Sep 17 00:00:00 2001
+From: Julio B <julio.bacel@gmail.com>
+Date: Thu, 3 Aug 2017 03:18:12 +0300
+Subject: [PATCH] Update i3 & xresources themes with profile_helper
+
+Signed-off-by: Julio B <julio.bacel@gmail.com>
+---
+ profile_helper.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/profile_helper.sh b/profile_helper.sh
+index d5cd1dd..584c490 100755
+--- a/profile_helper.sh
++++ b/profile_helper.sh
+@@ -22,6 +22,11 @@ _base16()
+   ln -fs $script ~/.base16_theme
+   export BASE16_THEME=${theme}
+   echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
++  local TMPFILE=`mktemp -q /tmp/Xresources.XXXXXXXXXX` && ( [ -f $HOME/.config/base16-xresources/xresources/base16-$theme-256.Xresources ] \
++   && (head -n -2 $HOME/.Xresources && echo -e "#include \".config/base16-xresources/xresources/base16-$theme-256.Xresources\"\n! vim:ft=xdefaults" ) > $TMPFILE \
++   && cp $TMPFILE $HOME/.Xresources && xrdb $HOME/.Xresources ) || notify-send "Theme base16-$theme does not exist for Xresources"
++  [ -x $HOME/.config/i3/scripts/update_color_theme.sh ] && ( $HOME/.config/i3/scripts/update_color_theme.sh \
++   && (echo "`date`: Base16 theme reload " && i3-msg reload) >> $HOME/.config/i3/stdout) || notify-send "Theme base16-$theme does not exist for i3"
+ }
+ FUNC
+ for script in $script_dir/scripts/base16*.sh; do
+-- 
+2.14.0
+
