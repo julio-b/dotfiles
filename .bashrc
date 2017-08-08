@@ -2,8 +2,7 @@
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
 
-source /usr/share/doc/pkgfile/command-not-found.bash
-
+[ -r /usr/share/doc/pkgfile/command-not-found.bash ] && . /usr/share/doc/pkgfile/command-not-found.bash
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
 for file in ~/.{bash_prompt,aliases,functions,path,extra,exports}; do
