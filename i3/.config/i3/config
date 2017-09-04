@@ -133,6 +133,7 @@ for_window [class="Tor Browser"] floating enable, border none
 for_window [class="Spotify"] floating enable
 for_window [class="GParted"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Pinentry"] floating enable
 
 #Autostart
 exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
