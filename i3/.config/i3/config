@@ -89,15 +89,18 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec urxvt -name floating
 bindsym $mod+Shift+q kill
 #bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id passmenu -b -p "pass: "
 
 bindsym $mod+Shift+g exec chromium
 bindsym $mod+g exec chromium --incognito
 bindsym $mod+p exec pcmanfm
 bindsym $mod+i exec tor-browser-en
 bindsym $mod+t exec urxvt -e bash -i -c "vim"
+bindsym $mod+n exec urxvt -e bash -i -c "newsbeuter"
 bindsym $mod+Shift+F10 exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
 bindsym --release $mod+F10 exec scrot --select $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
 bindsym $mod+Mod1+F10 exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
@@ -108,10 +111,12 @@ bindsym $mod+Mod1+Print exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%
 bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/.config/i3/scripts/pavolume.sh --up
 bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/.config/i3/scripts/pavolume.sh --down
 bindsym XF86AudioMute        exec --no-startup-id $HOME/.config/i3/scripts/pavolume.sh --togmute
+bindsym Shift+XF86AudioMute  exec --no-startup-id $HOME/.config/i3/scripts/pavolume.sh --sync
 bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
-#bindsym XF86Tools
+bindsym XF86Tools            exec --no-startup-id spotify
+bindsym Shift+XF86Tools      exec --no-startup-id urxvt -e bash -i -c "mpsyt"
 
 new_window 1pixel
 popup_during_fullscreen smart
@@ -134,6 +139,7 @@ for_window [class="Spotify"] floating enable
 for_window [class="GParted"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Pinentry"] floating enable
+for_window [class="URxvt" instance="floating"] floating enable
 
 #Autostart
 exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
