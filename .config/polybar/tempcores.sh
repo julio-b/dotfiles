@@ -6,6 +6,9 @@
 # Get information from cores temp thanks to sensors
 rawData=$( sensors | grep CPUTIN | awk '{print substr($2, 2, length($2)-5)}' )
 tempCore=($rawData)
+if [ -z "$tempCore" ]; then
+	exit 1
+fi
 
 # Define constants :
 degree="°C"
@@ -18,7 +21,7 @@ do
     for iTemp in ${!temperaturesValues[*]}
     do
         if (( "${tempCore[$iCore]}" < "${temperaturesValues[$iTemp]}"  )); then
-            tmpEcho="%{F${temperaturesColors[$iTemp]}}${tempCore[$iCore]}$degree"
+            tmpEcho="%{F${temperaturesColors[$iTemp]}}${tempCore[$iCore]}$degree%{F-}"
             finalEcho="$finalEcho $tmpEcho"
             break
         fi
@@ -32,7 +35,7 @@ for iTemp in ${!temperaturesValues[*]}
 do
     if (( "$sum" < "${temperaturesValues[$iTemp]}" )); then
         ## Decide if you want the icon colored too, default isn't
-        #tmpEcho="%{F${temperaturesColors[$iTemp]}}${temperaturesIcons[$iTemp]}"
+        #tmpEcho="%{F${temperaturesColors[$iTemp]}}${temperaturesIcons[$iTemp]}%{F-}"
         tmpEcho="${temperaturesIcons[$iTemp]}"
         finalEcho="$tmpEcho $finalEcho"
         break
