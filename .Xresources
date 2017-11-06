@@ -36,5 +36,5 @@ URxvt.cursorUnderline: false
 ! Hide mousepointer when typing
 URxvt.pointerBlank: true
 
-#include ".config/base16-xresources/xresources/base16-materia-256.Xresources"
+#include ".config/base16-xresources/xresources/base16-flat-256.Xresources"
 ! vim:ft=xdefaults
