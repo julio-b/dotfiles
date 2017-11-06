@@ -23,7 +23,7 @@ URxvt.url-select.underline: true
 ! Font
 !URxvt.depth: 32
 !URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=13
-URxvt.font: xft:Source Code Pro for Powerline:size=9
+URxvt.font: xft:Source Code Pro:style=Regular:pixelsize=12
 URxvt.visualBell: true
 URxvt.urgentOnBell: true
 URxvt.letterSpace: 0
@@ -35,6 +35,14 @@ URxvt.cursorUnderline: false
 
 ! Hide mousepointer when typing
 URxvt.pointerBlank: true
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
 
 #include ".config/base16-xresources/xresources/base16-flat-256.Xresources"
 ! vim:ft=xdefaults
