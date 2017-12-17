@@ -95,12 +95,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Shift+d exec --no-startup-id passmenu -b -p "pass: "
 
-bindsym $mod+Shift+g exec chromium
-bindsym $mod+g exec chromium --incognito
+bindsym $mod+g exec firefox --private-window
+bindsym $mod+Shift+g exec chromium --incognito
 bindsym $mod+p exec pcmanfm
 bindsym $mod+i exec tor-browser-en
 bindsym $mod+t exec urxvt -e bash -i -c "vim"
-bindsym $mod+n exec urxvt -e bash -i -c "newsbeuter"
+bindsym $mod+n exec urxvt -e bash -i -c "newsboat -r"
 bindsym $mod+Shift+F10 exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
 bindsym --release $mod+F10 exec scrot --select $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
 bindsym $mod+Mod1+F10 exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
@@ -137,7 +137,7 @@ for_window [window_type="menu"] floating enable
 for_window [class="Tor Browser"] floating enable, border none
 for_window [class="Spotify"] floating enable
 for_window [class="GParted"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable, move position 30 px 30 px
 for_window [class="Pinentry"] floating enable
 for_window [class="URxvt" instance="floating"] floating enable
 
