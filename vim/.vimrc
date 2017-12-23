@@ -34,6 +34,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'xuhdev/indent-java.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'lervag/vimtex'
 call plug#end()
 "______________________________
 
@@ -187,4 +188,22 @@ function! LightLineFilename()
 endfunction
 "______________________________________________________________________
 
+
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_latexmk = {
+      \ 'backend' : 'nvim',
+      \ 'background' : 1,
+      \ 'build_dir' : '',
+      \ 'callback' : 1,
+      \ 'continuous' : 1,
+      \ 'executable' : 'latexmk',
+      \ 'options' : [
+      \   '-xelatex',
+      \   '-verbose',
+      \   '-file-line-error',
+      \   '-synctex=1',
+      \   '-interaction=nonstopmode',
+      \ ],
+      \}
+"
 " vim:ts=2:sw=2:et
