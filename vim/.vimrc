@@ -107,6 +107,10 @@ endif
 set splitright
 set splitbelow
 
+set keymap=greek_utf-8
+set iminsert=0
+set imsearch=-1
+
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
@@ -138,14 +142,15 @@ set laststatus=2
 let g:lightline = {
 			\ 'colorscheme': 'jellybeans',
 			\ 'active': {
-			\   'left': [ [ 'mode', 'paste' ],
+			\   'left': [ [ 'mode', 'lang', 'paste' ],
 			\             [ 'fugitive', 'filename' ] ]
 			\ },
 			\ 'component_function': {
 			\   'fugitive': 'LightLineFugitive',
 			\   'readonly': 'LightLineReadonly',
 			\   'modified': 'LightLineModified',
-			\   'filename': 'LightLineFilename'
+			\   'filename': 'LightLineFilename',
+			\   'lang'    : 'LightLineKeymap'
 			\ },
 			\ 'separator': { 'left': '', 'right': '' },
 			\ 'subseparator': { 'left': '', 'right': '' }
@@ -186,6 +191,14 @@ function! LightLineFilename()
 				\ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
 				\ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
+
+function! LightLineKeymap()
+	let keymap_name_ = exists('b:keymap_name') ?
+		\ b:keymap_name == 'grk' ? 'GR' : b:keymap_name
+		\ : ''
+	return (&iminsert != 0 ? keymap_name_ : '')
+endfunction
+
 "______________________________________________________________________
 
 
