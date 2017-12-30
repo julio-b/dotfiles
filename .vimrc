@@ -18,6 +18,7 @@ set pastetoggle=<F1>
 inoremap <C-U> <C-G>u<C-U>
 nnoremap n nzzzv
 nnoremap N Nzzzv
+map Y y$
 
 "________vim-plug________________
 call plug#begin('~/.vim/plugged')
