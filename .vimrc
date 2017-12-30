@@ -34,6 +34,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'xuhdev/indent-java.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'machakann/vim-highlightedyank'
 Plug 'lervag/vimtex'
 call plug#end()
 "______________________________
@@ -133,6 +134,8 @@ if has('nvim')
   tnoremap <A-k> <C-\><C-n><C-w>k
   tnoremap <A-l> <C-\><C-n><C-w>l
 endif
+
+let g:highlightedyank_highlight_duration = 500
 
 "_____________lightline_______________________________________________
 set showcmd
