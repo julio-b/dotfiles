@@ -100,6 +100,10 @@ set background=dark
 set cursorline
 set colorcolumn=90
 
+if has('nvim')
+  set inccommand=split
+endif
+
 colorscheme base16-default-dark
 if filereadable(expand("~/.vimrc_background"))
 	let base16colorspace=256
