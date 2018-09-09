@@ -44,5 +44,5 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-#include ".config/base16-xresources/xresources/base16-flat-256.Xresources"
+#include ".config/base16-xresources/base16.Xresources"
 ! vim:ft=xdefaults
