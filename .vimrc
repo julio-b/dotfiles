@@ -5,6 +5,8 @@ inoremap jk <ESC>
 inoremap kj <ESC>
 map j gj
 map k gk
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 let mapleader=" "
 map <leader>s :source ~/.vimrc<CR>:let @/=''<CR>
@@ -18,6 +20,21 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 map Y y$
+nnoremap <f9> :make<cr>
+nnoremap <S-f9> :make clean<cr>
+nnoremap <leader>l :ls<CR>:b<space>
+" fix σ->ς
+nnoremap <leader>f :%s/σ\>/ς/g<cr>
+
+" Keep indent selection in visual mode.
+vnoremap < <gv
+vnoremap > >gv
+
+imap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<Plug>delimitMateCR"
+
+au FileType c,cpp setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 colorcolumn=81 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0
 
 "________vim-plug________________
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -53,6 +70,8 @@ set autoindent
 set copyindent
 set smartindent
 set cindent
+set linebreak
+set breakindent
 
 filetype plugin indent on
 
@@ -64,6 +83,12 @@ set shiftwidth=4
 set number
 set relativenumber
 set showmatch
+
+"relativenumber only in normal mode
+autocmd FocusLost * :set norelativenumber
+autocmd FocusGained * :set relativenumber
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 
 set hlsearch
 set incsearch
@@ -84,7 +109,7 @@ set list
 set comments=sl:/*,mb:\ *,elx:\ */
 
 set scrolloff=5
-set cpoptions+=$
+set cpoptions+=n$
 set wildmenu
 
 set autoread
@@ -103,6 +128,9 @@ set t_Co=256
 set background=dark
 set cursorline
 set colorcolumn=90
+" Syntax coloring limit
+set synmaxcol=300
+
 
 if has('nvim')
   set inccommand=split
