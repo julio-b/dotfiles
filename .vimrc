@@ -13,7 +13,6 @@ nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 nmap <leader><space> :nohlsearch<CR>
 cmap w!! w !sudo tee > /dev/null %
 nnoremap <f12> :!ctags -R<cr>
-map <C-f> :NERDTreeToggle<CR>
 set pastetoggle=<F1>
 inoremap <C-U> <C-G>u<C-U>
 nnoremap n nzzzv
@@ -29,20 +28,19 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-"Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-syntastic/syntastic'
-Plug 'godlygeek/tabular'
+Plug 'w0rp/ale'
+Plug 'junegunn/vim-easy-align'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'airblade/vim-gitgutter'
-Plug 'xuhdev/indent-java.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'machakann/vim-highlightedyank'
 Plug 'lervag/vimtex'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 call plug#end()
 "______________________________
 
@@ -213,8 +211,26 @@ function! LightLineKeymap()
 	return (&iminsert != 0 ? keymap_name_ : '')
 endfunction
 
-"______________________________________________________________________
+"_____________deoplete_______________________________________________
 
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_start_length = 1
+
+"_____________delimitmate_______________________________________________
+
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 2
+
+
+"________vim-better-whitespace_________________________________________
+
+let g:better_whitespace_operator='<leader>c'
+let g:strip_whitelines_at_eof=1
+let g:show_spaces_that_precede_tabs=1
+let g:better_whitespace_verbosity=1
+
+"________vimtex________________________________________________________
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_latexmk = {
