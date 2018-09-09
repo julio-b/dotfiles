@@ -142,7 +142,6 @@ for_window [class="Pinentry"] floating enable
 for_window [class="URxvt" instance="floating"] floating enable
 
 #Autostart
-exec --no-startup-id feh --bg-scale ~/Pictures/background.jpg
 exec --no-startup-id polybar top
 exec --no-startup-id compton --backend glx --vsync opengl-swc --paint-on-overlay -i 0.99 -b
 exec --no-startup-id redshift-gtk

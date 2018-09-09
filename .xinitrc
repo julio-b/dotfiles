@@ -34,7 +34,7 @@ setxkbmap -layout us,gr -option grp:shifts_toggle
 xset s 240 60
 xset dpms 900 900 900
 xset b 6 760 100
-
+test -f ~/.fehbg && sh ~/.fehbg &
 mkdir -p ~/.config/i3
 echo "---- STARTUP $(date +"%Y-%m-%d %H:%M:%S") ----" > ~/.config/i3/stdout
 echo "---- STARTUP $(date +"%Y-%m-%d %H:%M:%S") ----" > ~/.config/i3/stderr
