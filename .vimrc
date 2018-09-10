@@ -149,6 +149,10 @@ set keymap=greek_utf-8
 set iminsert=0
 set imsearch=-1
 
+inoremap <C-L> <C-^>
+set spelllang=en,el
+nnoremap <F2> :setlocal spell!<CR>
+
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
