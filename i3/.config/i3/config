@@ -141,6 +141,8 @@ for_window [class="GParted"] floating enable
 for_window [class="Pavucontrol"] floating enable, move position 30 px 30 px
 for_window [class="Pinentry"] floating enable
 for_window [class="URxvt" instance="floating"] floating enable
+for_window [class="Steam" title="Friends List"] floating enable
+for_window [class="Steam" title="Steam - News"] floating enable
 
 #Autostart
 exec --no-startup-id polybar top
