@@ -57,4 +57,16 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --du --dirsfirst "$@" | less -N;
 }
 
+#Fetch PKGBUILD directly from repo
+function getpkgbuild(){
+	curl  --fail https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/$1 2>/dev/null
+	if [[ $? -ne 0 ]]; then
+		curl --fail https://git.archlinux.org/svntogit/community.git/plain/trunk/PKGBUILD?h=packages/$1 2>/dev/null
+	fi
+	if [[ $? -ne 0 ]]; then
+		echo "Can't find requested PKDBUILD" >&2
+		exit 404
+	fi
+}
+
 # vim: ft=sh
