@@ -5,6 +5,7 @@ alias vimdiff="nvim -d"
 
 #colorize commands
 alias du="du -csh"
+alias dua="du -csh .[!.]* * |sort -h"
 alias df="df -Th"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
