@@ -65,7 +65,7 @@ function getpkgbuild(){
 	fi
 	if [[ $? -ne 0 ]]; then
 		echo "Can't find requested PKDBUILD" >&2
-		exit 404
+		return 44
 	fi
 }
 
