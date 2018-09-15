@@ -9,7 +9,7 @@ URxvt.scrollBar: false
 !URxvt.scrollstyle: next
 URxvt.scrollstyle: plain
 
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard,resize-font
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard,resize-font,bell-command
 URxvt.url-launcher: /usr/bin/chromium
 !URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
@@ -24,6 +24,7 @@ URxvt.url-select.underline: true
 !URxvt.depth: 32
 !URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=13
 URxvt.font: xft:Source Code Pro:style=Regular:pixelsize=12
+URxvt.bell-command: paplay /usr/share/sounds/freedesktop/stereo/bell.oga
 URxvt.visualBell: true
 URxvt.urgentOnBell: true
 URxvt.letterSpace: 0
