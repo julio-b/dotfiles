@@ -30,6 +30,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 
 export MANPAGER='less -s -M +Gg -X'
 
-export PATH=$PATH:$HOME/.bin
+export PATH=$HOME/.bin:$PATH
+export WEECHAT_HOME=$HOME/.config/weechat
 
 # vim: ft=sh

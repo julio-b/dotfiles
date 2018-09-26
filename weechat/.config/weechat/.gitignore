@@ -1,0 +1,13 @@
+certs/
+guile/
+logs/
+lua/
+perl/
+python/
+ruby/
+script/
+tcl/
+xfer/
+sec.conf
+irc.conf
+*.log

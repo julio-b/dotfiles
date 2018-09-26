@@ -117,14 +117,19 @@ bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 bindsym XF86Tools            exec --no-startup-id spotify
 bindsym Shift+XF86Tools      exec --no-startup-id urxvtc -e bash -i -c "mpsyt"
+bindsym XF86Mail             exec --no-startup-id weechat
 
 new_window 1pixel
 popup_during_fullscreen smart
 workspace_auto_back_and_forth yes
 hide_edge_borders smart
+focus_on_window_activation smart
+force_display_urgency_hint 500 ms
 
 floating_minimum_size 80 x 60
 floating_maximum_size -1 x -1
+
+assign [class="URxvt" instance="IRC"] 9
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="page-info"] floating enable
@@ -143,6 +148,7 @@ for_window [class="Pinentry"] floating enable
 for_window [class="URxvt" instance="floating"] floating enable
 for_window [class="Steam" title="Friends List"] floating enable
 for_window [class="Steam" title="Steam - News"] floating enable
+for_window [title="Event Tester"] floating enable
 
 #Autostart
 exec --no-startup-id polybar top
