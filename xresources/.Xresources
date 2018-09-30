@@ -1,53 +1,63 @@
-URxvt.termName: rxvt-256color
-URxvt.iso14755: false
-URxvt.iso14755_52: false
+URxvt*font:           xft:Source Code Pro for Powerline:style=Regular:pixelsize=14,\
+                      xft:SauceCodePro Nerd Font:style=Regular:pixelsize=14,\
+                      -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*boldFont:       xft:Source Code Pro for Powerline:style=Bold:pixelsize=14,\
+                      xft:SauceCodePro Nerd Font:style=Bold:pixelsize=14
+URxvt*italicFont:     xft:Source Code Pro for Powerline:style=Italic:pixelsize=14,\
+                      xft:SauceCodePro Nerd Font:style=Italic:pixelsize=14
+URxvt*boldItalicFont: xft:Source Code Pro for Powerline:style=Bold Italic:pixelsize=14,\
+                      xft:SauceCodePro Nerd Font:style=Bold Italic:pixelsize=14
 
-URxvt.transparent: false
-URxvt.fading: 0
-URxvt.loginShell: true
-URxvt.scrollBar: false
-!URxvt.scrollstyle: next
-URxvt.scrollstyle: plain
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.hinting:                true
+Xft.rgba:                   rgb
+Xft.autohint:               false
+Xft.hintstyle:              hintsmedium
+Xft.lcdfilter:              lcddefault
 
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard,resize-font,bell-command
-URxvt.url-launcher: /usr/bin/firefox
-!URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-URxvt.url-select.underline: true
-!URxvt.clipboard.autocopy: true
-!URxvt.clipboard.copycmd: xclip -i -selection clipboard
-!URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-!URxvt.keysym.C-C: perl:clipboard:copy
-!URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.termName:             rxvt-256color
+URxvt.iso14755:             false
+URxvt.iso14755_52:          false
 
-! Font
-!URxvt.depth: 32
-!URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=13
-URxvt.font: xft:Source Code Pro:style=Regular:pixelsize=12
-URxvt.bell-command: paplay /usr/share/sounds/freedesktop/stereo/bell.oga
-URxvt.visualBell: true
-URxvt.urgentOnBell: true
-URxvt.letterSpace: 0
+URxvt.saveLines:            2000
+URxvt.transparent:          false
+URxvt.fading:               10
+URxvt.loginShell:           true
+URxvt.scrollBar:            false
+URxvt.scrollstyle:          plain
+URxvt.internalBorder:       0
+URxvt.externalBorder:       0
+URxvt.skipBuiltinGlyphs:    true
+
+URxvt.bell-command:         paplay /usr/share/sounds/freedesktop/stereo/bell.oga
+URxvt.visualBell:           true
+URxvt.urgentOnBell:         true
+URxvt.letterSpace:          0
 
 ! Cursor
-URxvt.cursorBlink: true
-URxvt.cursorColor: #657b83
-URxvt.cursorUnderline: false
-
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
 ! Hide mousepointer when typing
-URxvt.pointerBlank: true
+URxvt.pointerBlank:         true
 
-IRC*title: IRC
-IRC*url-launcher: /usr/bin/tor-browser-en
-IRC*bell-command: paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+URxvt.perl-ext-common:      default,matcher,clipboard,resize-font,bell-command
+URxvt.resize-font.step:     1
+URxvt.matcher.button:       3
+URxvt.url-launcher:         /usr/bin/firefox
+URxvt.url-select.underline: true
+URxvt.clipboard.autocopy:   true
+URxvt.clipboard.copycmd:    xclip -i -selection clipboard
+URxvt.clipboard.pastecmd:   xclip -o -selection clipboard
+URxvt.keysym.C-C:           perl:clipboard:copy
+URxvt.keysym.C-V:           perl:clipboard:paste
+URxvt.keysym.C-A-V:         perl:clipboard:paste_escaped
 
-Xft.dpi: 96
-Xft.antialias: true
-Xft.hinting: true
-Xft.rgba: rgb
-Xft.autohint: false
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+IRC*title:                  IRC
+IRC*url-launcher:           /usr/bin/tor-browser-en
+IRC*bell-command:           paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+IRC*mapAlert:               true
 
 #include ".config/base16-xresources/base16.Xresources"
 ! vim:ft=xdefaults
