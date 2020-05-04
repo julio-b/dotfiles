@@ -5,11 +5,11 @@ export COLORTERM='rxvt-unicode-256color'
 export VISUAL='nvim'
 export EDITOR='nvim'
 
-export HISTCONTROL="ignoredups:erasedups"
+export HISTCONTROL="ignorespace:ignoredups:erasedups"
 export HISTTIMEFORMAT="[%F %T] "
 export HISTSIZE=999999
 export HISTFILESIZE=$HISTSIZE;
-export HISTIGNORE="ls:l:la:ll:cd:cd -:-:cd /tmp*:tmpd*:n.:pwd:exit:\:q:date:history:history :h:vim:vi:v:pacaur -Syu"
+export HISTIGNORE="ls:l:la:ll:cd:cd -:-:cd /tmp*:tmpd*:n.:pwd:exit:\:q:date:history:history :h:vim:vi:v"
 
 export LS_COLORS="di=36;40:ln=35;40:so=31;:pi=0;:ex=1;;40:bd=0;:cd=37;:su=37;:sg=0;:tw=0;:ow=0;:"
 
@@ -30,7 +30,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 
 export MANPAGER='less -s -M +Gg -X'
 
-export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.bin:$HOME/.riscv/bin:$PATH
 export WEECHAT_HOME=$HOME/.config/weechat
 
 # vim: ft=sh
