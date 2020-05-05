@@ -98,7 +98,7 @@ bindsym $mod+Shift+d exec --no-startup-id passmenu -b -p "pass: "
 bindsym $mod+g exec firefox --private-window
 bindsym $mod+Shift+g exec chromium --incognito
 bindsym $mod+p exec pcmanfm
-bindsym $mod+i exec tor-browser-en
+bindsym $mod+i exec torbrowser-launcher
 bindsym $mod+t exec urxvtc -e bash -i -c "vim"
 bindsym $mod+n exec urxvtc -e bash -i -c "newsboat -r"
 bindsym $mod+Shift+F10 exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
@@ -117,7 +117,7 @@ bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 bindsym XF86Tools            exec --no-startup-id spotify
 bindsym Shift+XF86Tools      exec --no-startup-id urxvtc -e bash -i -c "mpsyt"
-bindsym XF86Mail             exec --no-startup-id weechat
+bindsym XF86Explorer         exec --no-startup-id weechat
 
 new_window 1pixel
 popup_during_fullscreen smart
