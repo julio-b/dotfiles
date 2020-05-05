@@ -4,7 +4,7 @@
 # https://github.com/jaagr/polybar/wiki/User-contributed-modules#per-core-temperatures
 
 # Get information from cores temp thanks to sensors
-rawData=$( sensors | grep CPUTIN | awk '{print substr($2, 2, length($2)-5)}' )
+rawData=$( sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' )
 tempCore=($rawData)
 if [ -z "$tempCore" ]; then
 	exit 1

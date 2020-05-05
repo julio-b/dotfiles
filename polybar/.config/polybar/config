@@ -18,7 +18,7 @@ base0E = ${xrdb:color5:#000000}
 base0F = ${xrdb:color17:#000000}
 
 [bar/top]
-monitor = HDMI-0
+monitor = LVDS1
 width = 100%
 height = 22
 offset-x = 0
@@ -46,7 +46,7 @@ font-6 = DejaVu Sans:pixelsize=6;3
 ;
 modules-left = i3 xtitle
 modules-center = keyboard date
-modules-right = volume cpu temperature memory wifi powermenu
+modules-right = volume battery cpu temperature memory xbacklight wifi powermenu
 tray-position = right
 fixed-center = true
 
@@ -83,6 +83,16 @@ label-urgent-foreground = ${colors.base07}
 label-urgent-background = ${colors.base03}
 label-urgent-underline = ${colors.base0A}
 
+[module/xbacklight]
+type = internal/xbacklight
+output = LVDS1
+format = <ramp>
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
 [module/cpu]
 type = internal/cpu
 interval = 1
@@ -108,7 +118,7 @@ ramp-coreload-7-foreground = ${colors.base08}
 [module/memory]
 type = internal/memory
 interval = 2
-format = <label> <bar-used>
+format = <label>
 label = %{T6}%percentage_used:3:3%%{T-}
 bar-used-format = %{T7}%fill%%indicator%%empty%%{T-}
 bar-used-width = 17
@@ -125,7 +135,7 @@ bar-used-empty-foreground = #444444
 
 [module/wifi]
 type = internal/network
-interface = wifi1
+interface = wlp3s0
 interval = 2.0
 format-connected = <label-connected>
 label-connected = %{T6}%downspeed:8:8%%{T-}
@@ -169,7 +179,8 @@ ramp-volume-2 = 
 
 [module/temperature]
 type = internal/temperature
-hwmon-path = /sys/devices/platform/nct6775.656/hwmon/hwmon2/temp2_input
+thermal-zone = 1
+;hwmon-path = /sys/devices/platform/nct6775.656/hwmon/hwmon2/temp2_input
 
 base-temperature = 20
 warn-temperature = 80
@@ -196,6 +207,33 @@ ramp-5-foreground = #ef02db
 ; ${colors.base0A}
 ; ${colors.base09}
 ; ${colors.base08}
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-charging =  %{A1:notify-send -u low "Remaining percentage \: %percentage%%":} %percentage%%%{A}
+label-discharging = %{A1:notify-send -u low "Remaining percentage \:  %percentage%%":} %time%%{A}
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.base08}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.base09}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.base0A}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.base05}
+ramp-capacity-4 = 
+ramp-capacity-4-foreground = ${colors.base05}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
 
 [module/powermenu]
 type = custom/menu
