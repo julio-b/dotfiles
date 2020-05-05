@@ -152,23 +152,50 @@ time-alt = %H:%M:%S
 label = %date% %time%
 
 [module/volume]
-type = custom/script
-tail = true
-exec = ~/.config/i3/scripts/pavolume.sh --listen
-format = <label>
-label = %output%
-label-font = 1
-label-padding = 1
-click-right = exec pavucontrol &
-click-left = ~/.config/i3/scripts/pavolume.sh --togmute
-scroll-up = ~/.config/i3/scripts/pavolume.sh --up
-scroll-down = ~/.config/i3/scripts/pavolume.sh --down
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+
+format-volume = %{A3:exec pavucontrol &:}<ramp-volume> <label-volume>%{A}
+format-muted = %{A3:exec pavucontrol &:}<label-muted>%{A}
+
+label-volume = %percentage%
+label-muted =  %percentage%
+label-muted-foreground = #f00
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/temperature]
-type = custom/script
-interval = 1
-exec-if = sensors
-exec = ~/.config/polybar/tempcores.sh
+type = internal/temperature
+hwmon-path = /sys/devices/platform/nct6775.656/hwmon/hwmon2/temp2_input
+
+base-temperature = 20
+warn-temperature = 80
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = #f00
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-0-foreground = #6bff49
+ramp-1-foreground = #f4cb24
+ramp-2-foreground = #ff8819
+ramp-3-foreground = #ff3205
+ramp-4-foreground = #f40202
+ramp-5-foreground = #ef02db
+; ${colors.base0B}
+; ${colors.base0B}
+; ${colors.base0B}
+; ${colors.base0A}
+; ${colors.base09}
+; ${colors.base08}
 
 [module/powermenu]
 type = custom/menu
@@ -212,6 +239,6 @@ label-maxlen = 50
 type = internal/xkeyboard
 format = <label-layout> <label-indicator>
 label-layout = %{T6}%layout%%{T-}
-label-indicator = %{T6}%name:1:1%%{T-}
+label-indicator-on = %{T6}%name:1:1%%{T-}
 
 ; vim:ft=dosini
