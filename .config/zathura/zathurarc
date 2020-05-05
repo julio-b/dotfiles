@@ -35,7 +35,6 @@ set recolor-darkcolor           "#93a1a1" # base1
 
 set guioptions ''
 set selection-clipboard clipboard
-set smooth-scroll true
 set window-title-basename true
 set incremental-search true
 set synctex true
