@@ -1,6 +1,6 @@
 #!/bin/bash
-export TERM='rxvt-unicode-256color'
-export COLORTERM='rxvt-unicode-256color'
+#export TERM='rxvt-unicode-256color'
+#export COLORTERM='rxvt-unicode-256color'
 
 export VISUAL='nvim'
 export EDITOR='nvim'
