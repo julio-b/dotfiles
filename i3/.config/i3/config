@@ -151,8 +151,8 @@ for_window [class="sun-awt-X11-XFramePeer"] floating enable
 for_window [title="Event Tester"] floating enable
 
 #Autostart
-exec --no-startup-id polybar top
 exec --no-startup-id picom --backend glx --vsync --fading -i 0.98 --dbus --use-damage --xrender-sync-fence --daemon
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk
 exec --no-startup-id xss-lock -- i3exit lock
 
