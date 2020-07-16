@@ -2,5 +2,7 @@ vim/.vim/autoload/plug.vim
 vim/.vim/autoload/plug.vim.old
 vim/.vim/plugged/
 vim/.vimrc_background
+vim/.vim/.netrwhist
+vim/.vim/spell*
 i3/.config/i3/std*
 i3/.config/i3/*.backup*

@@ -7,9 +7,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-fugitive'
-Plug 'w0rp/ale'
-Plug 'junegunn/vim-easy-align'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-html', 'coc-json', 'coc-python', 'coc-pairs']
 
 " Need to pacman -S fzf, /usr/share/vim/vimfiles/plugin/fzf.vim is loaded automatically
 Plug 'https://github.com/junegunn/fzf.vim'
@@ -18,24 +17,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	let g:deoplete#enable_at_startup = 0
-	autocmd InsertEnter * call deoplete#enable()
-	autocmd CompleteDone * pclose!
-
-	Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
-	let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-	let g:deoplete#sources#clang#clang_header = "/usr/include/clang/"
-
-	Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-endif
-Plug 'https://github.com/octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
-
-Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets'
-
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsMapCR=0
 
 Plug 'ntpeters/vim-better-whitespace'
 let g:better_whitespace_operator='<leader>c'
@@ -43,12 +24,16 @@ let g:strip_whitelines_at_eof=1
 let g:show_spaces_that_precede_tabs=1
 let g:better_whitespace_verbosity=1
 
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 500
 
+Plug 'norcalli/nvim-colorizer.lua'
+
 Plug 'lervag/vimtex'
+let g:tex_comment_nospell = 1
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_compiler_latexmk = {
@@ -67,19 +52,20 @@ let g:vimtex_compiler_latexmk = {
       \ ],
       \}
 
+Plug 'mike-hearn/base16-vim-lightline'
 Plug 'itchyny/lightline.vim' | Plug 'maximbaz/lightline-ale'
 set showcmd
 set noshowmode
 set laststatus=2
 let g:lightline = {
-		\ 'colorscheme': 'powerline',
+		\ 'colorscheme': 'base16_gruvbox_dark_pale',
 		\ 'active': {
 		\   'left': [ [ 'mode', 'lang', 'paste' ],
 		\             [ 'fugitive', 'filename' ] ],
 		\   'right': [ [ 'lineinfo' ],
 		\              [ 'percent' ],
 		\              [ 'fileformat', 'fileencoding', 'filetype' ],
-		\              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ]
+		\              [ 'cocstatus', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ]
 		\ },
 		\ 'component_function': {
 		\   'fugitive': 'LightLineFugitive',
@@ -97,7 +83,10 @@ let g:lightline.component_expand = {
 		\  'linter_warnings': 'lightline#ale#warnings',
 		\  'linter_errors': 'lightline#ale#errors',
 		\  'linter_ok': 'lightline#ale#ok',
+		\  'cocstatus': 'coc#status'
 		\ }
+
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 let g:lightline.component_type = {
 		\     'linter_checking': 'left',
@@ -129,8 +118,8 @@ function! LightLineReadonly()
 endfunction
 
 function! LightLineFugitive()
-	if exists("*fugitive#head")
-		let branch = fugitive#head()
+	if exists("*FugitiveHead")
+		let branch = FugitiveHead()
 		return branch !=# '' ? ''.branch : ''
 	endif
 	return ''
@@ -158,5 +147,13 @@ function! LightlineFiletype()
 	return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
 
+
+
+Plug 'sheerun/vim-polyglot'
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
+command! PU PlugUpdate | PlugUpgrade
+set termguicolors
+lua require'colorizer'.setup()
