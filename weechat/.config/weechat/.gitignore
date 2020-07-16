@@ -11,3 +11,4 @@ xfer/
 sec.conf
 irc.conf
 *.log
+*.upgrade
