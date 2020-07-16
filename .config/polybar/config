@@ -125,7 +125,7 @@ bar-used-empty-foreground = #444444
 
 [module/wifi]
 type = internal/network
-interface = wifi0
+interface = wifi1
 interval = 2.0
 format-connected = <label-connected>
 label-connected = %{T6}%downspeed:8:8%%{T-}
