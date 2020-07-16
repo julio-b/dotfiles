@@ -30,12 +30,6 @@ nnoremap <BS> :b#<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-imap <expr><TAB> pumvisible() ? "\<C-n>" : (neosnippet#expandable_or_jumpable() ?
-                 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>")
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-imap <expr><CR> pumvisible() ? deoplete#close_popup()
-                 \ : "\<CR>\<Plug>AutoPairsReturn"
-
 set keymap=greek_utf-8
 set iminsert=0
 set imsearch=-1

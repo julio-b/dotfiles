@@ -1,0 +1,5 @@
+{
+	"html.autoClosingTags": false,
+	"pairs.disableLanguages": ["tex"],
+	"coc.preferences.formatOnType": true
+}
