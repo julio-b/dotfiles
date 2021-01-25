@@ -83,6 +83,7 @@ autocmd FileType c,cpp setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=8
 
 
 
+set shortmess+=c
 set updatetime=300
 set signcolumn=yes
 
@@ -128,13 +129,16 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -142,3 +146,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+
+hi Visual ctermbg=black ctermfg=white
