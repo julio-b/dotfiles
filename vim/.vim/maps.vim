@@ -32,7 +32,7 @@ vnoremap > >gv
 
 set keymap=greek_utf-8
 set iminsert=0
-set imsearch=-1
+set imsearch=0
 inoremap <C-L> <C-^>
 
 set spelllang=en,el

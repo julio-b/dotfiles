@@ -8,7 +8,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-html', 'coc-json', 'coc-python', 'coc-pairs']
+let g:coc_global_extensions = ['coc-html', 'coc-json', 'coc-python', 'coc-pairs', 'coc-vimtex']
 
 " Need to pacman -S fzf, /usr/share/vim/vimfiles/plugin/fzf.vim is loaded automatically
 Plug 'https://github.com/junegunn/fzf.vim'
@@ -33,6 +33,7 @@ let g:highlightedyank_highlight_duration = 500
 Plug 'norcalli/nvim-colorizer.lua'
 
 Plug 'lervag/vimtex'
+let g:tex_flavor = "latex"
 let g:tex_comment_nospell = 1
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_progname = 'nvr'
@@ -151,6 +152,10 @@ endfunction
 
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
+
+
+Plug 'sbdchd/neoformat'
+
 
 call plug#end()
 
