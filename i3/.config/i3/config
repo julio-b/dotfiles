@@ -137,7 +137,7 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 for_window [class="Tor Browser"] floating enable, border none
-for_window [class="torbrowser-launcher"] floating enable, border none
+for_window [class="torbrowser-launcher"] floating enable, border none, move position center
 for_window [class="Spotify"] floating enable
 for_window [class="GParted"] floating enable
 for_window [class="Pavucontrol"] floating enable, move position 30 px 30 px
@@ -148,7 +148,10 @@ for_window [class="Steam" title="Steam - News"] floating enable
 for_window [class="lutris"] floating enable
 for_window [class="sun-awt-X11-XDialogPeer"] floating enable
 for_window [class="sun-awt-X11-XFramePeer"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Nvidia-settings"] floating enable
 for_window [title="Event Tester"] floating enable
+for_window [title="About Mozilla Firefox"] floating enable
 
 #Autostart
 exec --no-startup-id picom --backend glx --vsync --fading -i 0.98 --dbus --use-damage --xrender-sync-fence --daemon
