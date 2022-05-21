@@ -7,6 +7,11 @@ set mark-symlinked-directories on
 set show-all-if-ambiguous on
 set colored-stats on
 
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+
 set editing-mode vi
 
 set show-mode-in-prompt on
