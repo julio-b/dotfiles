@@ -12,7 +12,6 @@ nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 nmap <silent> <leader><space> :nohlsearch<CR>
 cmap w!! w !sudo tee > /dev/null %
 set pastetoggle=<F1>
-inoremap <C-U> <C-G>u<C-U>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 map Y y$
@@ -34,13 +33,14 @@ set keymap=greek_utf-8
 set iminsert=0
 set imsearch=0
 inoremap <C-L> <C-^>
+noremap <C-L> a<C-^><Esc>
 
 set spelllang=en,el
 nnoremap <F2> :setlocal spell! spell?<CR>
 nnoremap <leader>] ]s
 nnoremap <leader>[ [s
-nnoremap <leader>s z=
-nnoremap <leader>S  :%s/σ\>/ς/g<cr>
+nnoremap <leader>s 1z=]s
+nnoremap <leader>S  :%s/σ\>/ς/Ig<cr>
 "nnoremap <leader>Sa zg
 "nnoremap <leader>SS :spellrepall
 
