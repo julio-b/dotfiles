@@ -2,8 +2,15 @@
 #export TERM='rxvt-unicode-256color'
 #export COLORTERM='rxvt-unicode-256color'
 
+export TERMINAL='kitty'
 export VISUAL='nvim'
 export EDITOR='nvim'
+
+if [ -n "$DISPLAY" ]; then
+	export BROWSER='firefox --private'
+else
+	export BROWSER='links'
+fi
 
 export HISTCONTROL="ignorespace:ignoredups:erasedups"
 export HISTTIMEFORMAT="[%F %T] "
@@ -28,9 +35,14 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
-export MANPAGER='less -s -M +Gg -X'
+export MANPAGER='nvim +Man!'
 
 export PATH=$HOME/.bin:$HOME/.riscv/bin:$PATH
 export WEECHAT_HOME=$HOME/.config/weechat
+
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
+#export GPG_TTY=$(tty)
+#gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # vim: ft=sh

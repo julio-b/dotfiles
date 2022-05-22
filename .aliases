@@ -1,8 +1,4 @@
 #!/bin/bash
-alias vim="nvim"
-alias v="nvim"
-alias vimdiff="nvim -d"
-
 #colorize commands
 alias du="du -csh"
 alias dua="du -csh .[!.]* * |sort -h"
@@ -19,7 +15,6 @@ alias l="ls  -1 ${lsflags}"
 alias ll="ls -1a ${lsflags}"
 alias la="ls -la ${lsflags}"
 alias ls="ls -p ${lsflags}"
-alias n.="urxvt &"
 shopt -s autocd
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -31,8 +26,8 @@ alias calc="python3 -ic \"from math import *; import cmath\""
 alias pyshare="ip address |grep \"inet \" |sed 's/\/.*//'| awk '{print \"http://\"\$2\":8880\"}' && python3 -m http.server 8880"
 alias pyshare_ethonly="python3 -m http.server --bind \`ip address |grep \"enp\" |grep \"inet \"| awk '{print \$2}' | sed 's/\/.*//'\`"
 alias g="git"
-alias p="pacaur"
 alias :q="exit"
 alias h="history 100"
+alias myip="curl ipinfo.io"
 
 # vim: ft=sh
