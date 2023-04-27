@@ -3,6 +3,7 @@
 #export COLORTERM='rxvt-unicode-256color'
 
 export TERMINAL='kitty'
+export TERM='kitty'
 export VISUAL='nvim'
 export EDITOR='nvim'
 
@@ -39,6 +40,9 @@ export MANPAGER='nvim +Man!'
 
 export PATH=$HOME/.bin:$HOME/.riscv/bin:$PATH
 export WEECHAT_HOME=$HOME/.config/weechat
+
+export LIBVA_DRIVER_NAME=nvidia
+export MOZ_DISABLE_RDD_SANDBOX=1
 
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh

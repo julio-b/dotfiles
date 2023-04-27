@@ -25,9 +25,12 @@ alias dots="cd ~/.dotfiles"
 alias calc="python3 -ic \"from math import *; import cmath\""
 alias pyshare="ip address |grep \"inet \" |sed 's/\/.*//'| awk '{print \"http://\"\$2\":8880\"}' && python3 -m http.server 8880"
 alias pyshare_ethonly="python3 -m http.server --bind \`ip address |grep \"enp\" |grep \"inet \"| awk '{print \$2}' | sed 's/\/.*//'\`"
+alias urlencode='python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1] if len(sys.argv) > 1 else sys.stdin.read()[0:-1]))"'
+alias urldecode='python3 -c "import urllib.parse, sys; print(urllib.parse.unquote(sys.argv[1] if len(sys.argv) > 1 else sys.stdin.read()[0:-1]))"'
 alias g="git"
 alias :q="exit"
 alias h="history 100"
 alias myip="curl ipinfo.io"
 
+alias firescrot="adb shell screencap -p | feh -"
 # vim: ft=sh
