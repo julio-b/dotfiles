@@ -1,5 +1,4 @@
 [global]
-font = Roboto Mono for Powerline 11
 allow_markup = yes
 plain_text = no
 format = "<b>%s</b>\n%b"
@@ -28,7 +27,6 @@ horizontal_padding = 6
 separator_color = frame
 startup_notification = false
 dmenu = /usr/bin/dmenu -p dunst:
-browser = /usr/bin/chromium
 icon_position = left
 max_icon_size = 80
 icon_folders = /usr/share/icons/Arc/status/16/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
