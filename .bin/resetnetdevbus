@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function errormsg_exit {
+    >&2 printf '%b\n' "$1"
+    exit "${2-1}"
+}
+
+[ $# -eq 1 ] && INTERFACE="$1" || errormsg_exit \
+    "Expected one INTERFACE argument. List available iw interfaces:\n$(iw dev|sed -n '/Interface/s/.*Interface\ //p')"
+
+[ -L "/sys/class/net/${INTERFACE}" ] || errormsg_exit "Interface does not exists. See 'ip link' or 'iw dev'"
+
+cd -P "/sys/class/net/${INTERFACE}/device/../.."
+
+[ -f serial ] && PCIBUS=$(cat serial) || errormsg_exit "Cannot find serial bus of ${INTERFACE}."
+
+[ -L "/sys/bus/pci/devices/${PCIBUS}" ] || errormsg_exit "Cannot find pci bus of ${INTERFACE}. Using double usb hub?"
+
+cd -P "/sys/bus/pci/devices/${PCIBUS}/driver"
+
+DRIVER=$(basename "$(pwd)")
+[[ "$DRIVER" =~ [eoux]hci[-_](hcd|pci)  ]] || errormsg_exit "Expected usb host device driver, but found ${DRIVER} instead"
+
+>&2 echo "Found ${DRIVER}. Resetting pci bus ${PCIBUS}"
+
+echo "${PCIBUS}" | sudo tee unbind >/dev/null
+echo "${PCIBUS}" | sudo tee bind >/dev/null
