@@ -121,7 +121,11 @@ bindsym Shift+XF86AudioMute  exec --no-startup-id $HOME/.config/i3/scripts/pavol
 bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
-bindsym XF86Explorer         exec --no-startup-id weechat
+bindsym XF86Explorer         exec --no-startup-id "$irc-cmd" ; workspace "IRC"
+
+set $irc-cmd i3-msg -q '[class=\\"URxvt|kitty\\" instance=\\"IRC\\"] mark __i3__irc' &>/dev/null \
+             || kitty --name IRC -e bash -i -c '/usr/bin/catgirl sojulibera -w $(pass irc/soju |head -n1)'
+
 
 default_border pixel 1
 default_floating_border pixel 1
@@ -136,7 +140,7 @@ force_display_urgency_hint 500 ms
 floating_minimum_size 80 x 60
 floating_maximum_size -1 x -1
 
-assign [class="URxvt|kitty" instance="IRC"] 9
+assign [class="URxvt|kitty" instance="IRC"] "IRC"
 
 for_window [instance="dropdown"] floating enable, resize set 1300px 384px, move absolute position 120px 20px, move scratchpad
 bindsym $mod+n [instance="dropdown"] scratchpad show;[instance="dropdown"] sticky enable
