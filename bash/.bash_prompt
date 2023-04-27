@@ -1,120 +1,55 @@
-ESC=$'['
-END_ESC=m
-NOPRINT='\['
-END_NOPRINT='\]'
-WRAP="$NOPRINT$ESC"
-END_WRAP="$END_ESC$END_NOPRINT"
-RESET="${WRAP}0${END_WRAP}"
-RESET_BG="${WRAP}49${END_WRAP}"
-NORMAL="${WRAP}21${END_WRAP}"
-BOLD="${WRAP}1${END_WRAP}"
-
-function __fg_color {
-    printf "%s" "${WRAP}38;5;${1}${END_WRAP}"
-}
-
-function __bg_color {
-    printf "%s" "${WRAP}48;5;${1}${END_WRAP}"
-}
-
-BLACK=$(__fg_color 0);
-BLUE=$(__fg_color 33);
-CYAN=$(__fg_color 37);
-GREEN=$(__fg_color 64);
-ORANGE=$(__fg_color 166);
-PURPLE=$(__fg_color 125);
-RED=$(__fg_color 124);
-VIOLET=$(__fg_color 61);
-WHITE=$(__fg_color 15);
-YELLOW=$(__fg_color 136);
-
-prompt_git_branch() {
-	local branchName='';
-	if [ "$(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}")" == '0' ]; then
-		branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
-			git rev-parse --short HEAD 2> /dev/null || \
-			echo '(unknown)')";
-		printf "%s" "${branchName}"
-	else
-		return;
-	fi;
-}
-
-prompt_git_status() {
-	local s='';
-	if [ "$(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}")" == '0' ]; then
-		# check if the current directory is in .git before running git checks
-		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
-			if [[ -O "$(git rev-parse --show-toplevel)/.git/index" ]]; then
-				git update-index --really-refresh -q &> /dev/null;
-			fi;
-			# Check for uncommitted changes in the index.
-			if ! git diff --quiet --ignore-submodules --cached; then
-				s+='+';
-			fi;
-			# Check for unstaged changes.
-			if ! git diff-files --quiet --ignore-submodules --; then
-				s+='!';
-			fi;
-			# Check for untracked files.
-			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-				s+='?';
-			fi;
-			# Check for stashed files.
-			if git rev-parse --verify refs/stash &>/dev/null; then
-				s+='^';
-			fi;
-		fi;
-		[ -n "${s}" ] && s=" [${s}]";
-		printf "%s" "${s}"
-	else
-		return;
-	fi;
-}
+#RESET \e[0 BOLD \e[1m DIM \e[2m ITALIC \e[3m UNDELINE \e[4m
+#FG 8 COLOR \e[30m ... \e[37m  #BG 8 COLOR \e[40m ... \e[47m
+#FG 254 COLOR \e[38;5;Nm       #BG 254 COLOR \e[48;5;Nm
+#FG RGB COLOR \e[38;2;R;G;Bm   #BG RGB COLOR \e[48;2;R;G;Bm
+#FG DEFAULT \e[39m             #BG DEFAULT \e[49m
 
 function __prompt_ps1 {
-	local usercolor='';
-	local hostcolor='';
-	local usersh='$';
-	local stat='';
+	local defaultuserc='\[\e[36m\]'
+	local altuserc='\[\e[31m\]'
+	local defaulthostc='\[\e[35m\]'
+	local althostc='\[\e[33m\]'
+	local defaultwdc='\[\e[34m\]'
+
+	local usercolor=$defaultuserc
+	local hostcolor=$defaulthostc
+
+	usersh='\$'
 
 	if [[ "${USER}" == "root" ]]; then
-		usercolor=${RED}
+		usercolor=$altuserc
 		usersh='#'
-	else
-		usercolor=${BLUE}
 	fi;
 
 	if [[ "${SSH_TTY}" ]]; then
-		hostcolor=${RED}
-	else
-		hostcolor=${CYAN}
+		hostcolor=$althostc
 	fi;
 
-	printf "%s" "${BOLD}"
-	printf "%s" "${usercolor}\u"
-	printf "%s" "${WHITE}@"
-	printf "%s" "${hostcolor}\h"
-	printf "%s" "${GREEN} \w "
-	if stat=$(prompt_git_branch); then
-		printf "%s" "${VIOLET}${stat}${BLUE}$(prompt_git_status)"
-	fi
-	printf "%s" "${RESET_BG}${WHITE}${usersh} "
-	printf "%s" "${RESET}${RESET_BG}"
+	#bind "set vi-cmd-mode-string \1\e7\e[${#USER}0C\2+\1\e8\2"
+	#bind "set vi-ins-mode-string \1\e7\e[${#USER}0C\2-\1\e8\2"
+
+	# https://wiki.archlinux.org/title/Bash/Prompt_customization#Common_capabilities
+	# \e7 : save cursor pos, \e[999c : move at the end of line,
+	# \e[${#?}D\e[1C : move sizeof($?) colums left,
+	#
+	# print $?, \e8 : restore cursor pos
+	userpc1="\[\e7\e[999C\e[\${#?}D\e[1C\$?\e8\]"
+	userpc1="${userpc1}\[\e[1m\]${usercolor}\u\[\e[39m\]@${hostcolor}\h ${defaultwdc}\w \[\e[0m\]"
 }
 
-function __prompt {
-	PS1="$(__prompt_ps1)"
-	PS2="${YELLOW}→ ${RESET}${RESET_BG}";
-}
+source /usr/share/git/git-prompt.sh
 
-if [[ ! "$PROMPT_COMMAND" == *__prompt* ]]; then
-	case $(tty) in
-		/dev/tty[0-9]*)
-			;;
-		*)
-			PROMPT_COMMAND='__prompt;'$'\n'"$PROMPT_COMMAND" ;;
-	esac
-fi
+PS2="\[\e[0;1;33m\]→ \[\e[0m\]";
+
+# This is very slow on large repositories.
+# Consider $ git config bash.showUntrackedFiles false
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWCOLORHINTS=true
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM="verbose git"
+GIT_PS1_SHOWCONFLICTSTATE="yes"
+
+PROMPT_COMMAND='__prompt_ps1; __git_ps1 "${userpc1}" "${usersh} " "(%s) "'
 
 # vim: ft=sh
