@@ -8,13 +8,13 @@ source ~/.vim/plugins.vim
 source ~/.vim/maps.vim
 
 filetype plugin indent on
-set autoindent copyindent cindent
+set autoindent copyindent smartindent
 set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
 
 set hlsearch incsearch ignorecase smartcase
 set inccommand=split
 
-set complete=.,w,b,u,t,i,d
+set complete=.,w,b,u,kspell,s,t,i,d
 set completeopt=longest,menuone,preview
 set wildmenu
 set wildmode=list:longest,full
@@ -26,10 +26,12 @@ set showmatch
 set shortmess=atIc
 set title
 set list
-set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set scrolloff=3
-set wrap linebreak
+set listchars=tab:▸\ ,lead:·,trail:·,eol:¬,nbsp:_
+set listchars+=precedes:<,extends:>
+set sidescroll=5 "when using nowrap
+set wrap showbreak=﬌\ \ \    linebreak
 set splitright splitbelow
+set scrolloff=3
 
 syntax enable
 set cursorline
@@ -43,7 +45,7 @@ set number relativenumber
 augroup numbertoggle
 	"relativenumber only in normal mode, disable number for help and term
 	autocmd!
-	autocmd FileType help     setlocal nonumber norelativenumber
+	autocmd FileType help     setlocal nonumber norelativenumber signcolumn=no
 	autocmd FileType man     setlocal nonumber norelativenumber signcolumn=no
 	autocmd TermOpen term://* setlocal nonumber norelativenumber signcolumn=no
 	autocmd InsertLeave,BufEnter,FocusGained,WinEnter *
@@ -66,25 +68,14 @@ augroup myvimrc
 	" disable autocomment for newline,o,O
 	autocmd QuickFixCmdPost helpgrep cwindow
 
-	autocmd FileType vim setlocal formatoptions-=ro
-	autocmd FileType tex,markdown,gitcommit setlocal spell
+	autocmd FileType vim setlocal formatoptions-=ro keywordprg=:help
+	autocmd FileType tex,markdown,gitcommit,mail setlocal spell
 	autocmd FileType c,cpp setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 colorcolumn=81 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0
 augroup END
 
 
 set updatetime=300
 set signcolumn=yes
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
 
 augroup highlight_yank
     autocmd!
