@@ -88,8 +88,11 @@ mode "$mode_system" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+Menu exec --no-startup-id xset s off -dpms
-bindsym $mod+Shift+Menu exec --no-startup-id xset s on +dpms
+set $i3-notify-cmd notify-send --icon=/usr/share/doc/i3/logo-30.png --expire-time=1000 --urgency=low --app-name=i3wm-notifications
+
+bindsym $mod+Menu \
+	exec "xset $(xset q|sed -n '/DPMS\ is/{s/.*Disabled/s\ on\ +dpms/p ;s/.*Enabled/s\ off\ -dpms/p}')" ; \
+	exec "$i3-notify-cmd --hint=string:x-dunst-stack-tag:i3wm-toggle-screensaver \\"Auto Lockscreen\\" \\"$(xset q|sed -n '/DPMS\ is/s/.*is\ //p')\\""
 
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec kitty --name floating
