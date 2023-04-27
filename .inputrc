@@ -1,22 +1,32 @@
 $include /etc/inputrc
-#set bell-style audible
 set bell-style visible
-set visible-stats on
-set page-completions off
-set mark-symlinked-directories on
-set show-all-if-ambiguous on
+set blink-matching-paren on
+set completion-query-items 200
 set colored-stats on
+set visible-stats on
+set colored-completion-prefix on
+set menu-complete-display-prefix on
+set mark-symlinked-directories on
+set page-completions off
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set skip-completed-text on
+set keyseq-timeout 350
 
-set meta-flag on
-set input-meta on
-set convert-meta off
-set output-meta on
 
 set editing-mode vi
-
 set show-mode-in-prompt on
-set vi-cmd-mode-string +
-set vi-ins-mode-string -
+
+#Set cursor shape and background colors depending on vi mode
+#\e[cursorshapeblock\e[reset;dim;BGcolorBlack
+#\e[cursorshapeline\e[reset;BGcolorDefault
+$if term=linux
+	set vi-ins-mode-string \1\e[?0c\e[0;49m\2-
+	set vi-cmd-mode-string \1\e[?8c\e[0;2;40m\2+
+$else
+	set vi-ins-mode-string \1\e[5 q\e[0;49m\2-
+	set vi-cmd-mode-string \1\e[1 q\e[0;2;40m\2+
+$endif
 
 $if mode=vi
 set keymap vi-command
@@ -26,7 +36,13 @@ j:history-search-forward
 k:history-search-backward
 " s":"Isudo jkA"
 " l":"A| less"
+" dm":dump-macros
+" df":dump-functions
+" dv":dump-variables
+" r":re-read-init-file
 set keymap vi-insert
+Tab:menu-complete
+"\e[Z":menu-complete-backward
 "\e[A":history-search-backward
 "\e[B":history-search-forward
 Control-l:clear-screen
