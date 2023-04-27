@@ -52,10 +52,6 @@ else
     eval "$(dircolors -b)"
 fi
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-BASE16_SHELL_HOOKS=$HOME/.config/base16-shell-hooks/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi

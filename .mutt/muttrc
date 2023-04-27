@@ -18,9 +18,6 @@ set collapse_unread
 set tilde
 set quit=ask-yes
 
-#Theme
-source "~/.mutt/base16_colors.cfg"
-
 #Accounts
 source "~/.mutt/alt"
 folder-hook $folder 'source "~/.mutt/alt"'
