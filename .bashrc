@@ -26,11 +26,8 @@ shopt -s nocaseglob
 shopt -s cdspell
 shopt -s extglob
 
-if [ -f $HOME/.dircolors ]
-then
-    eval "$(dircolors -b $HOME/.dircolors)"
-else
-    eval "$(dircolors -b)"
+if hash vivid 2>/dev/null; then
+	export LS_COLORS="$(vivid generate gruvbox-dark)"
 fi
 
 # BEGIN_KITTY_SHELL_INTEGRATION
