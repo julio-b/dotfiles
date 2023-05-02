@@ -13,7 +13,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 run-help() { help -m "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
 bind -m vi-insert -x '"\eh": run-help'
 
-for file in {aliases,bash_prompt,exports,functions}; do
+for file in {aliases,bash_prompt,functions}; do
 	if [[ -r ~/.config/bashrc/"${file}" ]]; then
 		source ~/.config/bashrc/"${file}"
 	fi
