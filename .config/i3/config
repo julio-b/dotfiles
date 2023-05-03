@@ -129,7 +129,6 @@ set $irc-cmd i3-msg -q '[class=\\"URxvt|kitty\\" instance=\\"IRC\\"] mark __i3__
 
 default_border pixel 1
 default_floating_border pixel 1
-for_window [class="^.*"] border pixel 1
 
 popup_during_fullscreen smart
 workspace_auto_back_and_forth yes
@@ -177,7 +176,7 @@ for_window [title="About Mozilla Firefox"] floating enable
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xss-lock -- locker
 # start dropdown term only if its not already running
-exec_always --no-startup-id "i3-msg -t command '[instance=\"dropdown\"] mark __i3__dropdown' -q || kitty --name dropdown"
+exec_always --no-startup-id "i3-msg -t command '[instance=\"dropdown\"] mark __i3__dropdown' -q &>/dev/null || kitty --name dropdown"
 
 
 include ~/.config/i3/theme.conf
