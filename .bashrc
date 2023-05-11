@@ -20,8 +20,18 @@ for file in {aliases,bash_prompt,functions}; do
 done
 unset file
 
-shopt -s checkwinsize
+HISTFILE=~/.bash_history
+HISTCONTROL="ignoreboth:erasedups"
+HISTTIMEFORMAT="[%F %T] "
+HISTSIZE=-1
+HISTIGNORE="ls:l:la:ll:cd:cd -:-:cd /tmp*:tmpd*:pwd:exit:\:q:date:history:history :h:vim:vi:v:nvim:git s:git log:git logs:git tree:git diff:myip:dmesg*"
+
 shopt -s histappend
+shopt -s histreedit histverify
+# save multiline history
+shopt -s cmdhist lithist
+
+shopt -s checkwinsize
 shopt -s nocaseglob
 shopt -s cdspell
 shopt -s extglob
