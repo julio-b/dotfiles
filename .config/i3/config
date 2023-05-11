@@ -108,12 +108,15 @@ bindsym XF86Search exec --no-startup-id firefox -P tdtdtd
 bindsym XF86Calculator exec --no-startup-id firefox -P binance
 bindsym $mod+p exec pcmanfm
 bindsym $mod+i exec torbrowser-launcher
-bindsym $mod+Shift+F10 exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
-bindsym --release $mod+F10 exec scrot --select $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
-bindsym $mod+Mod1+F10 exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
-bindsym $mod+Shift+Print exec scrot $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
-bindsym --release $mod+Print exec scrot --select $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
-bindsym $mod+Mod1+Print exec scrot --focused $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+
+set $scrot-cmd scrot --silent -F $HOME'/Pictures/screenshots/%Y-%m-%d-%H%M%S_$wx$h_scrot.png'
+
+bindsym $mod+Shift+F10 exec $scrot-cmd
+bindsym --release $mod+F10 exec $scrot-cmd --select
+bindsym $mod+Mod1+F10 exec $scrot-cmd --focused
+bindsym $mod+Shift+Print exec $scrot-cmd
+bindsym --release $mod+Print exec $scrot-cmd --select
+bindsym $mod+Mod1+Print exec $scrot-cmd --focused
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
