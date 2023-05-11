@@ -10,7 +10,12 @@ PS1='[\u@\h \W]\$ '
 export FZF_CTRL_T_OPTS="--select-1 --exit-0"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --no-sort"
 
-run-help() { help -m "$READLINE_LINE" 2>/dev/null || man "$READLINE_LINE"; }
+run-help() {
+    local TRIMED_LINE
+    TRIMED_LINE=$(sed 's/^\s\+\|\s\+$//g; s/\s-.*//'  <<< "$READLINE_LINE")
+    # shellcheck disable=SC2086         #not quoted ↓↓:  should be man git add #not man 'git add'
+    help -m  "$TRIMED_LINE" 2>/dev/null || man $TRIMED_LINE
+}
 bind -m vi-insert -x '"\eh": run-help'
 
 for file in {aliases,bash_prompt,functions}; do
