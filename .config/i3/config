@@ -180,7 +180,7 @@ for_window [title="About Mozilla Firefox"] floating enable
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xss-lock -- locker
 # start dropdown term only if its not already running
-exec_always --no-startup-id "i3-msg -t command '[instance=\"dropdown\"] mark __i3__dropdown' -q &>/dev/null || kitty --name dropdown"
+exec_always --no-startup-id "i3-msg -q '[instance=\"dropdown\"] mark __i3__dropdown' &>/dev/null || kitty --name dropdown"
 
 
 include ~/.config/i3/theme.conf
