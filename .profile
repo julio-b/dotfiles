@@ -1,6 +1,5 @@
 #!/bin/bash
 export TERMINAL='kitty'
-export TERM='kitty'
 export VISUAL='nvim'
 export EDITOR='nvim'
 

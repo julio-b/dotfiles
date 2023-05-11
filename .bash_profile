@@ -8,5 +8,8 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-	exec startx
+    exec startx
+elif [[ $TERM = 'linux' ]]; then
+    # silent pc speaker
+    setterm --blength=6 --bfreq=200
 fi
