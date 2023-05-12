@@ -40,6 +40,9 @@ alias h="history 50"
 alias myip="curl ipinfo.io"
 
 alias firescrot="adb shell screencap -p | feh -"
+alias feh='feh --quiet --verbose'
+alias feho='feh -Tviewer'
+
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 # vim: ft=sh

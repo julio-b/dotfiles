@@ -1,0 +1,26 @@
+# Multiple options can of course be used. If they are too long for one line,
+# you can use a \ to make them continue on the next one, but not mid-option.
+# imagemap -rV --quiet -W 400 -H 300 \
+#          --thumb-width 40 --thumb-height 30
+
+# ====================
+# A few default themes
+# ====================
+viewer --auto-zoom --sort filename --borderless \
+        --scale-down --draw-filename \
+        --draw-tinted --draw-exif \
+        --image-bg black
+
+# Create an index of the current directory. This version uses . as the
+# current dir, so you don't even need any commandline arguments.
+mkindex -iVO index.jpg .
+
+# More ambitious version...
+imgidx --index --output-only .fehindex.jpg --limit-width 1024 \
+       --thumb-width 128 --thumb-height 128 --verbose --quiet
+
+# Show a presentation
+present --full-screen --sort name --hide-pointer
+
+rfs --full-screen --hide-pointer --auto-zoom --randomize
+fs  --full-screen --hide-pointer --auto-zoom --sort filename

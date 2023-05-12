@@ -14,21 +14,6 @@ tmpd() {
 	cd "$dir" || exit
 }
 
-openimage() {
-	local types='*.jpg *.JPG *.png *.PNG *.gif *.GIF *.jpeg *.JPEG'
-
-	cd "$(dirname "$1")" || exit
-	local file
-	file=$(basename "$1")
-
-	feh --auto-zoom \
-		--sort filename --borderless \
-		--scale-down --draw-filename \
-		--image-bg black \
-		-q $types --start-at "$file"
-	-
-}
-
 # Determine size of a file or total size of a directory
 fs() {
 	if [[ $# -ne 0 ]]; then
