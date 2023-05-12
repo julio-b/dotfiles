@@ -4,13 +4,12 @@ mkd () {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
-# Make a temporary directory and enter it
 tmpd() {
 	local dir
 	if [ $# -eq 0 ]; then
 		dir=$(mktemp -d)
 	else
-		dir=$(mktemp -d -t "${1}.XXXXXXXXXX")
+		dir=$(mktemp -d --tmpdir "${1}.XXXXXXXXXX")
 	fi
 	cd "$dir" || exit
 }
@@ -32,7 +31,7 @@ openimage() {
 
 # Determine size of a file or total size of a directory
 fs() {
-	if [[ -n "$@" ]]; then
+	if [[ $# -ne 0 ]]; then
 		du -sbh -- "$@"
 	else
 		du -sbh -- .[^.]* *
@@ -45,11 +44,13 @@ function tre() {
 
 #Fetch PKGBUILD directly from repo
 function getpkgbuild(){
-	curl  --fail https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/$1 2>/dev/null
-	if [[ $? -ne 0 ]]; then
-		curl --fail https://git.archlinux.org/svntogit/community.git/plain/trunk/PKGBUILD?h=packages/$1 2>/dev/null
-	fi
-	if [[ $? -ne 0 ]]; then
+	if [[ $# -eq 0 ]]; then
+		return 1
+	elif curl -L --fail "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/${1}/trunk/PKGBUILD" 2>/dev/null; then
+		:
+	elif curl -L --fail "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/${1}/trunk/PKGBUILD" 2>/dev/null; then
+		:
+	else
 		echo "Can't find requested PKDBUILD" >&2
 		return 44
 	fi
