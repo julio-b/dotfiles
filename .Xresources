@@ -59,4 +59,5 @@ IRC*url-launcher:           /usr/bin/tor-browser-en
 IRC*bell-command:           paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 IRC*mapAlert:               true
 
+#include "/home/ju/.config/Xresources.theme"
 ! vim:ft=xdefaults
