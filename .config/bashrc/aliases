@@ -14,13 +14,17 @@ alias ip="ip -color=auto"
 lsflags="-h -F --color=auto --group-directories-first"
 alias l="\ls ${lsflags}"
 alias ls="\ls -1 ${lsflags}"
-alias la="\ls -lA ${lsflags}"
-alias ll="\ls -1A ${lsflags}"
+alias ll="\ls -l ${lsflags}"
+
+alias la="\ls -A ${lsflags}"
+alias lA="\ls -lA ${lsflags}"
+alias lla="\ls -lA ${lsflags}"
+
 alias lr="\ls -R ${lsflags}"
-alias lar="\ls -AR ${lsflags}"
+alias lR="\ls -AR ${lsflags}"
+# sort by file extension
 alias lx="\ls -XB ${lsflags}"
-alias llx="\ls -1XB ${lsflags}"
-alias lax="\ls -1AXB ${lsflags}"
+alias lX="\ls -AXB ${lsflags}"
 
 
 shopt -s autocd
