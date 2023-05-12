@@ -8,13 +8,22 @@
 	tool = vimdiff
 	conflictstyle = diff3
 [alias]
-	tree = log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%G?<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit
+	tree = log --graph --pretty=format:'%C(cyan)%h%Creset %s %C(green)(%cr) %C(magenta)%G? %an %C(italic yellow)%d'
+	l = log --pretty=format:'%C(dim cyan)%h %C(green)%ad %C(magenta)%><(17,mtrunc)%an %Creset%s%C(dim italic yellow)%d' --date=short --decorate=short
+	la = log --all --pretty=format:'%C(dim cyan)%h %C(reset)%s %C(italic yellow)%d %C(dim green)(%cr) %C(magenta)%an%w(,,9)%+b'
+	ls = log --stat
+	logs = log --stat
+	cgrep = log --pickaxe-all -G
 	ce = config --global -e
 	cob = checkout -b
-	logs = log --stat
-	s = status
+	ap = add -p
+	c = commit -v
+	s = status 
+	sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
+	refl = reflog --date=relative
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
+	colorMoved = zebra
 [pager]
 	log = /usr/share/git/diff-highlight/diff-highlight | less
 	show = /usr/share/git/diff-highlight/diff-highlight | less
