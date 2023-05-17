@@ -15,6 +15,7 @@
 	logs = log --stat
 	cgrep = log --pickaxe-all -G
 	ce = config --global -e
+	alias = config --get-regexp 'alias.'
 	cob = checkout -b
 	ap = add -p
 	c = commit -v
@@ -28,6 +29,11 @@
 	log = /usr/share/git/diff-highlight/diff-highlight | less
 	show = /usr/share/git/diff-highlight/diff-highlight | less
 	diff = /usr/share/git/diff-highlight/diff-highlight | less
+	alias = awk '/^alias/ { \
+			sub(\"^alias.\",\"\") ";"\
+			$1 = sprintf(\"\\x1B[1";"31m%-7s\\x1B[0m\",$1) ";"\
+			print $0 ";"\
+		}' | less
 [color]
 	diff = auto
 	status = auto
