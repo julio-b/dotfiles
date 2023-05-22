@@ -1,8 +1,11 @@
 #! /bin/bash
 dunstctl set-paused true
 
-i3lock -n -i ~/Pictures/lock.png -t --keylayout 2 -k --pass-media-keys \
---time-color=FFFFFFFF --date-color=FFFFFFFF --layout-color=FFFFFFFF \
---date-str="%A %d, %b %Y"
+i3lock -ntfk -i ~/Pictures/lock.png  --keylayout 2 --pass-media-keys \
+	--time-color=FFFFFFFF --date-color=FFFFFFFF --layout-color=FFFFFFFF \
+	--wrong-color=FF2255FF --verif-color=22AAFFAF --modif-color=AAAA22AF \
+	--bar-indicator --bar-max-height 2 --bar-base-width 2 --bar-color FF131210 \
+	--date-str="%A %d, %b %Y" \
+	--time-pos="w/2:80" --ind-pos="w/2:80" #--no-verify
 
 dunstctl set-paused false
