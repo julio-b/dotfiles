@@ -5,7 +5,7 @@
 [pass]
 	signcommits = true
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 	conflictstyle = diff3
 [alias]
 	tree = log --graph --pretty=format:'%C(cyan)%h%Creset %s %C(green)(%cr) %C(magenta)%G? %an %C(italic yellow)%d'
