@@ -177,6 +177,7 @@ for_window [title="Event Tester"] floating enable
 for_window [title="About Mozilla Firefox"] floating enable
 
 #Autostart
+exec --no-startup-id picom --config /dev/null --backend glx --vsync
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xss-lock -- locker
 # start dropdown term only if its not already running
