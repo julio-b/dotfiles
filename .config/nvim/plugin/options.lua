@@ -13,6 +13,7 @@ vim.o.preserveindent = true
 vim.o.tabstop = 8     -- \t width 
 vim.o.softtabstop = 8 -- spaces on TAB key press
 vim.o.shiftwidth = 8  -- indent level width
+vim.o.shiftround = true
 vim.o.expandtab = false
 
 vim.opt.formatoptions:append('1') -- :h fo-1
@@ -77,4 +78,4 @@ vim.opt.completeopt = { "menu", "menuone", "preview", "noselect" }
 vim.o.wildmode = 'longest:full,full'
 vim.o.pumblend = 20
 
-vim.opt.diffopt:append { "hiddenoff", "algorithm:minimal" }
+vim.opt.diffopt:append { "hiddenoff", "algorithm:minimal", "indent-heuristic" }

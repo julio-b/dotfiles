@@ -28,6 +28,8 @@ return {
 				prompt_title = "~ nvim files ~",
 				shorten_path = false,
 				cwd = "~/.config/nvim",
+				hidden = true,
+				no_ignore = true,
 				layout_strategy = "flex",
 				layout_config = {
 					width = 0.9,
