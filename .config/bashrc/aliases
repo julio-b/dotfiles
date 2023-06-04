@@ -26,6 +26,9 @@ alias lR="\ls -AR ${lsflags}"
 alias lx="\ls -XB ${lsflags}"
 alias lX="\ls -AXB ${lsflags}"
 
+alias vim=nvim
+alias vi=nvim
+alias nv=nvim
 
 shopt -s autocd
 alias ...="cd ../.."
