@@ -42,7 +42,7 @@ shopt -s cdspell
 shopt -s extglob
 
 if hash vivid 2>/dev/null; then
-	export LS_COLORS="$(vivid generate gruvbox-dark)"
+	export LS_COLORS="$(vivid generate ayu)"
 fi
 
 # BEGIN_KITTY_SHELL_INTEGRATION
