@@ -26,12 +26,13 @@ return {
 			ext_opts = {
 				[types.choiceNode] = {
 					active = {
-						virt_text = { { "●", "GruvboxOrange" } }
+						virt_text = { { "●", "DiagnosticVirtualTextHint" } }
+
 					}
 				},
 				[types.insertNode] = {
 					active = {
-						virt_text = { { "●", "GruvboxBlue" } }
+						virt_text = { { "●", "DiagnosticVirtualTextInfo" } }
 					}
 				}
 			},

@@ -45,22 +45,8 @@ vim.o.splitbelow = true
 
 vim.o.colorcolumn = "+1"
 
--- Cursorline highlighting control
---  Only have it on in the active buffer
+vim.o.cursorlineopt = 'number'
 vim.o.cursorline = true -- Highlight the current line
-local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
-local set_cursorline = function(event, value, pattern)
-	vim.api.nvim_create_autocmd(event, {
-		group = group,
-		pattern = pattern,
-		callback = function()
-			vim.opt_local.cursorline = value
-		end,
-	})
-end
-set_cursorline("WinLeave", false)
-set_cursorline("WinEnter", true)
-set_cursorline("FileType", false, "TelescopePrompt")
 
 vim.o.synmaxcol = 600
 

@@ -20,7 +20,7 @@ return {
 				section_separators = '',
 				component_separators = '',
 				icons_enabled = false,
-				theme = 'gruvbox'
+				theme = 'auto'
 			},
 			sections = {
 				lualine_b = { keymap, 'b:gitsigns_head', { 'diff', source = diff_source },
