@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ 'j-hui/fidget.nvim', opts = {} }, -- show lsp status messages
+		{ 'j-hui/fidget.nvim', opts = {}, tag = 'legacy' }, -- show lsp status messages
 		'folke/neodev.nvim',                -- specific lua_ls setting for neovim
 		'hrsh7th/cmp-nvim-lsp',
 	},
