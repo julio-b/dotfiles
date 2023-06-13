@@ -28,8 +28,12 @@ vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', {})
 
 vim.keymap.set('n', ']q', '<cmd>cnext<CR>', {})
 vim.keymap.set('n', '[q', '<cmd>cprev<CR>', {})
+vim.keymap.set('n', ']Q', '<cmd>clast<CR>', {})
+vim.keymap.set('n', '[Q', '<cmd>cfirst<CR>', {})
 vim.keymap.set('n', ']l', '<cmd>lnext<CR>', {})
 vim.keymap.set('n', '[l', '<cmd>lprev<CR>', {})
+vim.keymap.set('n', ']L', '<cmd>llast<CR>', {})
+vim.keymap.set('n', '[L', '<cmd>lfirst<CR>', {})
 
 
 -- Diagnostic keymaps
