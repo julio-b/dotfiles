@@ -38,26 +38,6 @@ return {
 			},
 		}
 
-		vim.keymap.set({ "i", "s" }, "<c-k>", function()
-			if luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			end
-		end, { silent = true })
-
-		vim.keymap.set({ "i", "s" }, "<c-j>", function()
-			if luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			end
-		end, { silent = true })
-
-		vim.keymap.set("i", "<c-l>", function()
-			if luasnip.choice_active() then
-				luasnip.change_choice(1)
-			end
-		end)
-
-		vim.keymap.set("i", "<c-u>", require("luasnip.extras.select_choice"))
-
 		cmp.setup {
 			snippet = {
 				expand = function(args)
@@ -69,23 +49,8 @@ return {
 			mapping = cmp.mapping.preset.insert {
 				["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
 				["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-				["<C-d>"] = cmp.mapping.scroll_docs(-4),
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<C-y>"] = cmp.mapping(
-					cmp.mapping.confirm {
-						behavior = cmp.ConfirmBehavior.Insert,
-						select = true,
-					},
-					{ "i", "c" }
-				),
-				["<M-y>"] = cmp.mapping(
-					cmp.mapping.confirm {
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = false,
-					},
-					{ "i", "c" }
-				),
 				["<C-space>"] = cmp.mapping {
 					i = cmp.mapping.complete(),
 					c = function(_)
@@ -99,6 +64,37 @@ return {
 					end,
 				},
 				["<tab>"] = cmp.config.disable,
+
+				--[[luasnip mappings]]
+				["<c-j>"] = cmp.mapping(
+					function()
+						if luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						end
+					end,
+					{ "i", "s" }),
+				["<c-k>"] = cmp.mapping(
+					function()
+						if luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						end
+					end,
+					{ "i", "s" }),
+				["<c-l>"] = cmp.mapping(
+					function()
+						if luasnip.choice_active() then
+							luasnip.change_choice(1)
+						end
+					end,
+					{ "i", "s" }),
+				["<c-u>"] = cmp.mapping(
+					function()
+						if luasnip.choice_active() then
+							require("luasnip.extras.select_choice")()
+							-- require("luasnip.extras.snippet_list").open()
+						end
+					end,
+					{ "i", "s" }),
 			},
 			sources = cmp.config.sources({
 				{ name = 'nvim_lsp' },
