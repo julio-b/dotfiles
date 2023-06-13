@@ -29,7 +29,7 @@ return {
 				shorten_path = false,
 				cwd = "~/.config/nvim",
 				hidden = true,
-				no_ignore = true,
+				no_ignore_parent = true,
 				layout_strategy = "flex",
 				layout_config = {
 					width = 0.9,
