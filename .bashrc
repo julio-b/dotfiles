@@ -12,7 +12,9 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 
 run-help() {
     local TRIMED_LINE
-    TRIMED_LINE=$(sed 's/^\s\+\|\s\+$//g; s/\s-.*//'  <<< "$READLINE_LINE")
+    TRIMED_LINE=${READLINE_LINE#"${READLINE_LINE%%[![:space:]]*}"}
+    TRIMED_LINE=${TRIMED_LINE%"${TRIMED_LINE##*[![:space:]]}"}
+    TRIMED_LINE=${TRIMED_LINE%% -*}
     # shellcheck disable=SC2086         #not quoted ↓↓:  should be man git add #not man 'git add'
     help -m  "$TRIMED_LINE" 2>/dev/null || man $TRIMED_LINE
 }
