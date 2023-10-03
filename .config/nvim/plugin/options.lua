@@ -64,4 +64,4 @@ vim.opt.completeopt = { "menu", "menuone", "preview", "noselect" }
 vim.o.wildmode = 'longest:full,full'
 vim.o.pumblend = 20
 
-vim.opt.diffopt:append { "hiddenoff", "algorithm:minimal", "indent-heuristic" }
+vim.opt.diffopt:append { "hiddenoff", "algorithm:histogram", "indent-heuristic", "linematch:60" }
