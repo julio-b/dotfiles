@@ -54,11 +54,10 @@ vim.keymap.set('v', '>', '>gv')
 vim.o.keymap = 'greek_utf-8'
 vim.o.iminsert = 0
 vim.o.imsearch = 0 -- TODO try -1 here
-vim.keymap.set('i', '<A-S-L>', '<C-^><cmd>lua require("lualine").refresh({scope = "window", place = {"statusline"}})<CR>',
+vim.keymap.set('i', '<A-S-L>', '<C-^>',
 	{ desc = "Switch language-mapping and refresh statusline" })
 vim.keymap.set('n', '<A-S-L>', function()
 		vim.o.iminsert = (vim.o.iminsert == 1) and 0 or 1
-		require("lualine").refresh({ scope = "window", place = { "statusline" } })
 	end, { desc = "Switch language-mapping and refresh statusline" })
 
 -- The default el dict has not been updated since https://github.com/vim/vim/issues/299
