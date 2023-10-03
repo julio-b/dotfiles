@@ -15,10 +15,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.opt.termguicolors = true
-
 require("lazy").setup("plugins", {
       lockfile = vim.fn.stdpath("data") .. "/lazy/lazy-lock.json",
 })
 
 vim.cmd [[cnoreabbrev lz Lazy]]
+vim.opt.termguicolors = true
+vim.cmd [[colorscheme quiet]]
