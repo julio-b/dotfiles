@@ -64,3 +64,7 @@ author: %C(bold blue)%an%Creset %C(blue)[%ae]%Creset%n\
 	pager = true
 [interactive]
 	singleKey = true
+; [sendemail]
+; 	smtpServer = 192.168.250.25
+; 	smtpDomain = gitarch
+; 	smtpAuth = none
