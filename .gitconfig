@@ -10,9 +10,11 @@
 [commit]
 	verbose = true
 [alias]
-	tree = log --graph --pretty=format:'%C(cyan)%h%Creset %s %C(green)(%cr) %C(magenta)%G? %an %C(italic yellow)%d'
-	l = log --pretty=format:'%C(dim cyan)%h %C(green)%ad %C(magenta)%><(17,mtrunc)%an %Creset%s%C(dim italic yellow)%d' --date=short --decorate=short
-	la = log --all --pretty=format:'%C(dim cyan)%h %C(reset)%s %C(italic yellow)%d %C(dim green)(%cr) %C(magenta)%an%w(,,9)%+b'
+	tree = log --graph --pretty=tree
+	lh = log --graph --pretty=hg
+	lhb = log --graph --pretty=hgb
+	l = log --pretty=l --date=short --decorate=short
+	la = log --all --pretty=la
 	ls = log --stat
 	logs = log --stat
 	cgrep = log --pickaxe-all -G
@@ -24,6 +26,21 @@
 	s = status 
 	sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
 	refl = reflog --date=relative
+[pretty]
+	tree = %C(cyan)%h%Creset %s %C(green)(%cr) %C(magenta)%G? %an %C(italic yellow)%d
+	l = %C(cyan)%h %C(green)%ad %C(magenta)%><(17,mtrunc)%an %Creset%s%C(italic yellow)%d
+	la = %C(cyan)%h %C(reset)%s %C(italic yellow)%d %C(green)(%cr) %C(magenta)%an%w(,,9)%+b
+	hg = \
+commit: %C(bold red)%h%Creset %C(red)[%H]%Creset %C(bold magenta)%d %Creset%n\
+date: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%n\
+author: %C(bold blue)%an%Creset %C(blue)[%ae]%Creset%n\
+%C(cyan)%s%n%Creset
+	hgb = \
+commit: %C(bold red)%h%Creset %C(red)[%H]%Creset %C(bold magenta)%d %Creset%n\
+date: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%n\
+author: %C(bold blue)%an%Creset %C(blue)[%ae]%Creset%n\
+%n%w(,6,6)%B%Creset
+
 [diff]
 	tool = nvimdiff
 	colorMoved = zebra
