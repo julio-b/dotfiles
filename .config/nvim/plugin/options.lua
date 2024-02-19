@@ -58,3 +58,8 @@ vim.o.wildmode = 'lastused:longest:full,full'
 vim.o.pumblend = 20
 
 vim.opt.diffopt:append { "hiddenoff", "algorithm:histogram", "indent-heuristic", "linematch:60" }
+
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
