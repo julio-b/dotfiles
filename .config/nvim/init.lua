@@ -21,4 +21,4 @@ require("lazy").setup("plugins", {
 
 vim.cmd [[cnoreabbrev lz Lazy]]
 vim.opt.termguicolors = true
-vim.cmd [[colorscheme quiet]]
+vim.cmd [[colorscheme lunaperche]]
