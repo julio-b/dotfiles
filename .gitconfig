@@ -45,3 +45,5 @@
 	interactive = auto
 	ui = true
 	pager = true
+[interactive]
+	singleKey = true
