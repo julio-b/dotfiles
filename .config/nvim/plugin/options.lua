@@ -22,22 +22,15 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.inccommand = 'split'
 
-vim.o.showmatch = true
-vim.o.matchtime =  1
-
 vim.o.title = true
-vim.o.showmode = false
-vim.opt.shortmess:append("aIWcs")
 
 vim.o.listchars = "tab:▸ ,lead:·,trail:·,eol:¬,nbsp:_,precedes:<,extends:>"
 vim.o.list = true
-vim.opt.cpoptions:append('$_n')
-vim.o.showbreak = '󰘍 '
+vim.opt.cpoptions:append('$n')
+vim.o.showbreak = '⤷ '
 vim.o.linebreak = true
 
 vim.o.sidescrolloff = 5 --when using nowrap
-vim.o.scrolloff = 3
-vim.o.scrolljump = 6
 
 vim.o.equalalways = false
 vim.o.splitright = false
@@ -55,13 +48,13 @@ vim.o.timeoutlen = 450
 vim.opt.shada:append { "'1000" } -- edited file marks
 vim.o.undofile = true
 
-vim.opt.wildignore:append { ".o", ".obj", "*~" }
-vim.opt.wildignore:append { "__pycache__", ".pyc" }
-vim.opt.wildignore:append { ".img", ".str" }
+vim.opt.wildignore:append { "*.o", "*.obj", "*~" }
+vim.opt.wildignore:append { "__pycache__", "*.pyc" }
+vim.opt.wildignore:append { "*.img", "*.str" }
 
 vim.o.complete = '.,w,b,u,kspell,s,t,i,d'
 vim.opt.completeopt = { "menu", "menuone", "preview", "noselect" }
-vim.o.wildmode = 'longest:full,full'
+vim.o.wildmode = 'lastused:longest:full,full'
 vim.o.pumblend = 20
 
 vim.opt.diffopt:append { "hiddenoff", "algorithm:histogram", "indent-heuristic", "linematch:60" }
