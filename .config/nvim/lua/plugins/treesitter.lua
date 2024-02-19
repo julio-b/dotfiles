@@ -5,7 +5,16 @@ return {
 	end,
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
-		'nvim-treesitter/nvim-treesitter-context',
+		{
+			'nvim-treesitter/nvim-treesitter-context',
+			config = function()
+				require 'treesitter-context'.setup {
+					min_window_height = 27,
+					multiline_threshold = 1,
+					max_lines = 2,
+				}
+			end
+		}
 	},
 	config = function()
 		require 'nvim-treesitter.configs'.setup {
