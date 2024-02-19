@@ -30,6 +30,8 @@ alias vim=nvim
 alias vi=nvim
 alias nv=nvim
 
+alias pacdiff="DIFFPROG='nvim -d' pacdiff -s"
+
 shopt -s autocd
 alias ...="cd ../.."
 alias ....="cd ../../.."
