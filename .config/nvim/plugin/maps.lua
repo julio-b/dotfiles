@@ -7,9 +7,9 @@ vim.keymap.set('n', 'j', [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' :
 vim.keymap.set('n', 'k', [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']], { expr = true, silent = true })
 
 
-vim.keymap.set('n', '<leader>w', '<cmd>w<CR>')
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '<leader>w', '<cmd>update<CR>')
+vim.keymap.set('n', 'n', 'nzzzv', {silent = true})
+vim.keymap.set('n', 'N', 'Nzzzv', {silent = true})
 
 vim.keymap.set('n', '<leader>`' ,'<cmd>source %<CR>')
 
