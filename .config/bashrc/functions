@@ -41,4 +41,19 @@ function getpkgbuild(){
 	fi
 }
 
+# REFS
+# ffmpeg capture x11 window: https://stackoverflow.com/a/63211279
+# firefox corrupt mp4 bug: https://support.mozilla.org/en-US/questions/1316956 
+#                          https://bugzilla.mozilla.org/show_bug.cgi?id=1450137
+# encode using vp8/webm with yuv420p pixel format: https://trac.ffmpeg.org/wiki/Encode/VP9
+record_window() {
+	ffmpeg -f x11grab -framerate 25 \
+		$(xwininfo \
+			| gawk 'match($0, /-geometry ([0-9]+x[0-9]+).([0-9]+).([0-9]+)/, a) \
+				{ print "-video_size " a[1] " -i +" a[2] "," a[3] }' \
+		) \
+		-c:v libvpx-vp9 -pix_fmt yuv420p "$(date +%Y-%m-%d_%H-%M_%S).webm"
+
+}
+
 # vim: ft=sh
