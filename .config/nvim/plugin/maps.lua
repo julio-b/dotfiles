@@ -3,8 +3,8 @@ vim.keymap.set('i', 'kj', '<ESC>')
 
 vim.keymap.set('', 'j', [[v:count ? 'j' : 'gj']], { expr = true, silent = true }) --[[ :h mapmode-nvo ]]
 vim.keymap.set('', 'k', [[v:count ? 'k' : 'gk']], { expr = true, silent = true })
-vim.keymap.set('n', 'j', [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']], { expr = true, silent = true })
-vim.keymap.set('n', 'k', [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']], { expr = true, silent = true })
+vim.keymap.set('n', 'j', [[v:count ? (v:count > 5 ? "m'" .. v:count : '') .. 'j' : 'gj']], { expr = true, silent = true })
+vim.keymap.set('n', 'k', [[v:count ? (v:count > 5 ? "m'" .. v:count : '') .. 'k' : 'gk']], { expr = true, silent = true })
 
 
 vim.keymap.set('n', '<leader>w', '<cmd>update<CR>')
