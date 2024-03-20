@@ -1,7 +1,5 @@
 vim.go.fileencoding = 'utf-8'
 
-vim.o.number = true
-vim.o.relativenumber = true
 vim.wo.signcolumn = 'yes'
 
 vim.o.autoindent = true
@@ -24,7 +22,7 @@ vim.o.inccommand = 'split'
 
 vim.o.title = true
 
-vim.o.listchars = "tab:▸ ,lead:·,trail:·,eol:¬,nbsp:_,precedes:<,extends:>"
+vim.o.listchars = "tab:› ,trail:·,lead:·,extends:▸,precedes:◂,nbsp:_"
 vim.o.list = true
 vim.opt.cpoptions:append('$n')
 vim.o.showbreak = '⤷ '
@@ -32,9 +30,9 @@ vim.o.linebreak = true
 
 vim.o.sidescrolloff = 5 --when using nowrap
 
-vim.o.equalalways = false
+vim.o.equalalways = true
 vim.o.splitright = false
-vim.o.splitbelow = true
+vim.o.splitbelow = false
 
 vim.o.colorcolumn = "+1"
 
