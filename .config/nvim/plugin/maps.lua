@@ -24,7 +24,6 @@ vim.keymap.set('n', '<leader>l', '<cmd>Telescope buffers<CR>')
 vim.keymap.set('n', '<leader>fe', '<cmd>Telescope find_files<CR>', {})
 vim.keymap.set('n', '<leader>fg', '<cmd>Telescope git_files<CR>', {})
 vim.keymap.set('n', '<leader>f/', '<cmd>Telescope live_grep<CR>', {})
-vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', {})
 
 vim.keymap.set('n', ']q', '<cmd>cnext<CR>', {})
 vim.keymap.set('n', '[q', '<cmd>cprev<CR>', {})
