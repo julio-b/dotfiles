@@ -31,9 +31,8 @@ function tre() {
 function getpkgbuild(){
 	if [[ $# -eq 0 ]]; then
 		return 1
-	elif curl -L --fail "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/${1}/trunk/PKGBUILD" 2>/dev/null; then
-		:
-	elif curl -L --fail "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/${1}/trunk/PKGBUILD" 2>/dev/null; then
+		
+	elif curl --fail "https://gitlab.archlinux.org/archlinux/packaging/packages/$1/-/raw/main/PKGBUILD" 2>/dev/null; then
 		:
 	else
 		echo "Can't find requested PKDBUILD" >&2
