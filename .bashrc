@@ -42,6 +42,7 @@ shopt -s checkwinsize
 shopt -s nocaseglob
 shopt -s cdspell
 shopt -s extglob
+shopt -s checkjobs
 
 if hash vivid 2>/dev/null; then
 	export LS_COLORS="$(vivid generate ayu)"
