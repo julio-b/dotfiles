@@ -1,7 +1,7 @@
 #!/bin/bash
 export TERMINAL='kitty'
-export VISUAL='nvim'
-export EDITOR='nvim'
+export VISUAL='vim'
+export EDITOR='vim'
 
 if [ -n "$DISPLAY" ]; then
 	export BROWSER='firefox --private'

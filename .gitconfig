@@ -5,7 +5,7 @@
 [pass]
 	signcommits = true
 [merge]
-	tool = nvimdiff
+	tool = vimdiff
 	conflictstyle = diff3
 [commit]
 	verbose = true
@@ -42,7 +42,7 @@ author: %C(bold blue)%an%Creset %C(blue)[%ae]%Creset%n\
 %n%w(,6,6)%B%Creset
 
 [diff]
-	tool = nvimdiff
+	tool = vimdiff
 	colorMoved = zebra
 	colorMovedWS = allow-indentation-change
 	algorithm = histogram
