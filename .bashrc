@@ -5,10 +5,7 @@ PS1='[\u@\h \W]\$ '
 [ -r /usr/share/doc/pkgfile/command-not-found.bash ] && . /usr/share/doc/pkgfile/command-not-found.bash
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
-[ -r /usr/share/fzf/completion.bash ] && . /usr/share/fzf/completion.bash
-[ -r /usr/share/fzf/key-bindings.bash ] && . /usr/share/fzf/key-bindings.bash
-export FZF_CTRL_T_OPTS="--select-1 --exit-0"
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --no-sort"
+eval "$(fzf --bash)"
 
 run-help() {
     local TRIMED_LINE
