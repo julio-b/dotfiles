@@ -19,6 +19,11 @@ var lspServers = [
 		filetype: ['sh', 'bash'],
 		path: '/usr/bin/bash-language-server',
 		args: ['start'],
+		workspaceConfig: {
+			bashIde: {
+				shellcheckArguments: "--extended-analysis=false --exclude=SC2034,SC2154,SC2164",
+			}
+		},
 	}]
 
 var lspOpts = {
