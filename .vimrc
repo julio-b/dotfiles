@@ -25,7 +25,7 @@ set showbreak=⤷\
 "set colorcolumn=+1
 set cpoptions+=n$
 set scrolloff=0
-set formatoptions+=1  " :h fo-1
+set formatoptions+=j1  " :h fo-1
 
 set hlsearch incsearch ignorecase smartcase
 set ttimeout ttimeoutlen=20
