@@ -6,6 +6,7 @@ start := \
 	https://github.com/tpope/vim-rhubarb.git \
 	https://github.com/junegunn/fzf.vim.git \
 	https://github.com/yegappan/lsp.git \
+	https://github.com/lervag/vimtex.git \
 
 opt := \
 
