@@ -27,7 +27,10 @@ alias lx="\ls -XB ${lsflags}"
 alias lX="\ls -AXB ${lsflags}"
 
 alias nv=nvim
-alias vh="vim -c 'help | only'"
+
+function vh() {
+	vim -c "help $* | only"
+}
 
 alias pacdiff="DIFFPROG='vim -d' pacdiff -s"
 
