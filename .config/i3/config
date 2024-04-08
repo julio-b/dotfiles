@@ -127,9 +127,11 @@ bindsym Shift+XF86AudioMute  exec --no-startup-id pavucontrol
 bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext        exec --no-startup-id playerctl next
 bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
-bindsym XF86Explorer         exec --no-startup-id "$irc-cmd" ; workspace "IRC"
 
-set $irc-cmd i3-msg -q '[class=\\"URxvt|kitty\\" instance=\\"IRC\\"] mark __i3__irc' &>/dev/null \
+bindsym XF86Explorer         exec --no-startup-id "$irc-cmd"; workspace IRC
+bindsym $mod+F1              exec --no-startup-id "$irc-cmd"; workspace IRC
+
+set $irc-cmd i3-msg -q '[con_mark=__i3__irc] mark __i3__irc' &>/dev/null \
              || kitty --name IRC -e bash -i -c '/usr/bin/catgirl sojulibera -w $(pass irc/soju |head -n1)'
 
 
@@ -146,9 +148,10 @@ floating_minimum_size 80 x 60
 floating_maximum_size -1 x -1
 
 assign [class="URxvt|kitty" instance="IRC"] "IRC"
+for_window [class="URxvt|kitty" instance="IRC"] mark __i3__irc
 
-for_window [instance="dropdown"] floating enable, resize set 1300px 384px, move absolute position 120px 20px, move scratchpad
-bindsym $mod+n [instance="dropdown"] scratchpad show;[instance="dropdown"] sticky enable
+for_window [instance="dropdown"] floating enable, resize set 1300px 384px, move absolute position 120px 20px, move scratchpad, mark __i3__dropdown
+bindsym $mod+n [con_mark=__i3__dropdown] scratchpad show, sticky enable
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="page-info"] floating enable
@@ -183,7 +186,7 @@ exec --no-startup-id picom --config /dev/null --backend glx --vsync
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xss-lock -- locker
 # start dropdown term only if its not already running
-exec_always --no-startup-id "i3-msg -q '[instance=\"dropdown\"] mark __i3__dropdown' &>/dev/null || kitty --name dropdown"
+exec_always --no-startup-id "i3-msg -q '[con_mark=__i3__dropdown] mark __i3__dropdown' &>/dev/null || kitty --name dropdown"
 exec --no-startup-id firefox --private-window
 
 
