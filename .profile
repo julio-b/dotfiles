@@ -9,7 +9,7 @@ else
 	export BROWSER='links'
 fi
 
-export LESS='-RFiJWXM --incsearch --use-color -Dd+g$-Du+m$'
+export LESS='-RFiWXM --incsearch --use-color -Dd+g$-Du+m$'
 
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
