@@ -4,6 +4,7 @@ kitty +kitten themes --reload-in=all || exit $?
 
 if [[ -r ~/.config/kitty/current-theme.conf ]] ; then
 	sed -n '/^[^#]/s/\(\w\+\)/\*\1:/p' ~/.config/kitty/current-theme.conf > ~/.config/Xresources.theme
+	sed -i '/^\*cursor:/d' ~/.config/Xresources.theme
 	xrdb -merge ~/.config/Xresources.theme
 	i3-msg reload
 	~/.config/polybar/launch.sh &>/dev/null
