@@ -36,6 +36,22 @@ augroup termdebug/autogdbinit
 	}
 augroup END
 
+function s:InspectFailedDumps()
+	let faileddumps = globpath('~/p/vim/src/testdir/failed/', '*.dump', 1, 1)
+	if len(faileddumps) == 0
+		echohl ErrorMsg
+		echom "Can't find any failed screendumps"
+		echohl None
+		return
+	endif
+	for d in faileddumps
+		tab call term_dumpdiff(d, d->substitute('testdir\/failed', 'testdir\/dumps',''))
+		setlocal nolist nowrap
+	endfor
+endfunction
+
+command! DebugFailedDumps call s:InspectFailedDumps()
+
 " augroup termdebug/vimsrc
 " 	au!
 " 	au DirChanged global,tabpage {
