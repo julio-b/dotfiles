@@ -32,6 +32,10 @@ function vh() {
 	vim -c "help $* | only"
 }
 
+function info() {
+	/usr/bin/info --output - --subnodes "$*" | sed '/^File: .*info/d' | less
+}
+
 alias pacdiff="DIFFPROG='vim -d' pacdiff -s"
 
 shopt -s autocd
