@@ -3,32 +3,16 @@ nnoremap <Left>    <cmd>vertical resize -5<cr>
 nnoremap <Up>      <cmd>resize +5<cr>
 nnoremap <Down>    <cmd>resize -5<cr>
 
-inoremap <A-S-h>    <C-\><C-n><C-w>H
-inoremap <A-S-j>    <C-\><C-n><C-w>J
-inoremap <A-S-k>    <C-\><C-n><C-w>K
-inoremap <A-S-l>    <C-\><C-n><C-w>L
-inoremap <A-h>      <C-\><C-n><C-w>h
-inoremap <A-j>      <C-\><C-n><C-w>j
-inoremap <A-k>      <C-\><C-n><C-w>k
-inoremap <A-l>      <C-\><C-n><C-w>l
+function s:hjklmaps(_, key)
+	exe "inoremap <A-S-"..a:key..">    <C-\><C-n><C-w>"..toupper(a:key)
+	exe "inoremap <A-"..a:key..">      <C-\><C-n><C-w>"..a:key
+	exe "nnoremap <A-S-"..a:key..">    <C-w>"..toupper(a:key)
+	exe "nnoremap <A-"..a:key..">      <C-w>"..a:key
+	exe "tnoremap <A-S-"..a:key..">    <C-w>"..toupper(a:key)
+	exe "tnoremap <A-"..a:key..">      <C-w>"..a:key
+endfunction
+eval "hjkl"->foreach(funcref('s:hjklmaps'))
 
-nnoremap <A-S-h>              <C-w>H
-nnoremap <A-S-j>              <C-w>J
-nnoremap <A-S-k>              <C-w>K
-nnoremap <A-S-l>              <C-w>L
-nnoremap <A-h>                <C-w>h
-nnoremap <A-j>                <C-w>j
-nnoremap <A-k>                <C-w>k
-nnoremap <A-l>                <C-w>l
-
-tnoremap <A-S-h>              <C-w>H
-tnoremap <A-S-j>              <C-w>J
-tnoremap <A-S-k>              <C-w>K
-tnoremap <A-S-l>              <C-w>L
-tnoremap <A-h>                <C-w>h
-tnoremap <A-j>                <C-w>j
-tnoremap <A-k>                <C-w>k
-tnoremap <A-l>                <C-w>l
 "tnoremap <Esc>      <C-\><C-n>
 
 nnoremap <C-c><C-c> <cmd>belowright terminal<CR>
