@@ -4,8 +4,8 @@ nnoremap <Up>      <cmd>resize +5<cr>
 nnoremap <Down>    <cmd>resize -5<cr>
 
 function s:hjklmaps(_, key)
-	exe "inoremap <A-S-"..a:key..">    <C-\><C-n><C-w>"..toupper(a:key)
-	exe "inoremap <A-"..a:key..">      <C-\><C-n><C-w>"..a:key
+	exe "inoremap <A-S-"..a:key..">    \<C-\><C-n><C-w>"..toupper(a:key)
+	exe "inoremap <A-"..a:key..">      \<C-\><C-n><C-w>"..a:key
 	exe "nnoremap <A-S-"..a:key..">    <C-w>"..toupper(a:key)
 	exe "nnoremap <A-"..a:key..">      <C-w>"..a:key
 	exe "tnoremap <A-S-"..a:key..">    <C-w>"..toupper(a:key)
