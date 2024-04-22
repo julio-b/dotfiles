@@ -37,7 +37,8 @@ augroup termdebug/autogdbinit
 augroup END
 
 function s:InspectFailedDumps()
-	let faileddumps = globpath('~/p/vim/src/testdir/failed/', '*.dump', 1, 1)
+	let testdirs = ['~/p/vim/src/testdir/failed/', '~/p/vim/runtime/syntax/testdir/failed/']
+	let faileddumps = globpath(testdirs->join(','), '*.dump', 1, 1)
 	if len(faileddumps) == 0
 		echohl ErrorMsg
 		echom "Can't find any failed screendumps"
