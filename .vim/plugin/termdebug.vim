@@ -46,7 +46,11 @@ function s:InspectFailedDumps()
 		return
 	endif
 	for d in faileddumps
-		tab call term_dumpdiff(d, d->substitute('testdir\/failed', 'testdir\/dumps',''))
+		try
+			tab call term_dumpdiff(d, d->substitute('testdir\/failed', 'testdir\/dumps',''))
+		catch /^Vim(\a\+):E485: Can't read file .*\/testdir\/dumps\/.*/
+			tab call term_dumpdiff(d, '/dev/null')
+		endtry
 		setlocal nolist nowrap
 	endfor
 endfunction
