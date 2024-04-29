@@ -11,20 +11,17 @@ alias dmesg="dmesg --color"
 alias tree="tree -Csh"
 alias ip="ip -color=auto"
 
-lsflags="-h -F --color=auto --group-directories-first"
-alias l="\ls ${lsflags}"
-alias ls="\ls -1 ${lsflags}"
-alias ll="\ls -l ${lsflags}"
+alias ls="ls -h -F --color=auto --group-directories-first"
+alias l="ls -l"
+alias ll="ls -1"
 
-alias la="\ls -A ${lsflags}"
-alias lA="\ls -lA ${lsflags}"
-alias lla="\ls -lA ${lsflags}"
+alias la="ls -A"
+alias lsa="ls -lA"
+alias lla="ls -lA"
 
-alias lr="\ls -R ${lsflags}"
-alias lR="\ls -AR ${lsflags}"
-# sort by file extension
-alias lx="\ls -XB ${lsflags}"
-alias lX="\ls -AXB ${lsflags}"
+alias lr="ls -R"
+alias lar="ls -AR"
+alias llr="ls -lAR"
 
 alias nv=nvim
 
