@@ -1,14 +1,12 @@
 #!/bin/bash
-#colorize commands
+
 alias du="du -csh"
 alias dua="du -csh .[!.]* * |sort -h"
 alias df="df -Th"
+alias tree="tree -Csh"
 alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
 alias diff="colordiff -ru"
 alias dmesg="dmesg --color"
-alias tree="tree -Csh"
 alias ip="ip -color=auto"
 
 alias ls="ls -h -F --color=auto --group-directories-first"
@@ -41,13 +39,13 @@ alias ....="cd ../../.."
 alias -- -="cd - > /dev/null"
 alias dl="cd ~/Downloads"
 alias dc="cd ~/Documents"
+
 alias calc="python3 -ic \"from math import *; import cmath\""
 alias pyshare="ip -j a| jq -r '.[].addr_info|.[].local|\"http://\"+.+\":8880\"' && python3 -m http.server 8880"
 alias urlencode='python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1] if len(sys.argv) > 1 else sys.stdin.read()[0:-1]))"'
 alias urldecode='python3 -c "import urllib.parse, sys; print(urllib.parse.unquote(sys.argv[1] if len(sys.argv) > 1 else sys.stdin.read()[0:-1]))"'
-alias g="git"
 alias :q="exit"
-alias h="history 50"
+alias h="history | less +G"
 alias myip="curl ipinfo.io"
 
 alias firescrot="adb shell screencap -p | feh -"
