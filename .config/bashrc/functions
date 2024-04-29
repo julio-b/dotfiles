@@ -55,4 +55,12 @@ record_window() {
 
 }
 
+0x0() {
+	if [[ $# -eq 1 ]]; then
+		curl -i -F"file=@$*" 'https://0x0.st'
+	else
+		curl -i -F'file=@-' 'https://0x0.st'
+	fi
+}
+
 # vim: ft=sh

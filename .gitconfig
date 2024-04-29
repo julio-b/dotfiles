@@ -26,6 +26,13 @@
 	s = status 
 	sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
 	refl = reflog --date=relative
+	pastediff = "!f(){ git diff $@\
+		| curl -i -F'file=@-' 'https://0x0.st' \
+		| sed  -n -e '/^x-token/{s/.*: //;h}' \
+			-e '${x;s/^/curl -Fdelete= -Ftoken=/;G;s/[\\r]*\\n/ /g;p;\
+			      x;s/^/curl /;s/$/ | git apply/;p\
+			     }' ; \
+		}; f"
 [pretty]
 	tree = %C(cyan)%h%Creset %s %C(green)(%cr) %C(magenta)%G? %an %C(italic yellow)%d
 	l = %C(cyan)%h %C(green)%ad %C(magenta)%><(17,mtrunc)%an %Creset%s%C(italic yellow)%d
