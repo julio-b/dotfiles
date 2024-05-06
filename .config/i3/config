@@ -135,8 +135,8 @@ set $irc-cmd i3-msg -q '[con_mark=__i3__irc] mark __i3__irc' &>/dev/null \
              || kitty --name IRC -e bash -i -c '/usr/bin/catgirl sojulibera -w $(pass irc/soju |head -n1)'
 
 
-default_border pixel 3
-default_floating_border pixel 3
+default_border normal 3
+default_floating_border normal 3
 
 popup_during_fullscreen smart
 workspace_auto_back_and_forth yes
