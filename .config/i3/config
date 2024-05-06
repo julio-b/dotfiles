@@ -190,5 +190,13 @@ exec_always --no-startup-id "i3-msg -q '[con_mark=__i3__dropdown] mark __i3__dro
 exec --no-startup-id firefox --private-window
 
 
-include ~/.config/i3/theme.conf
-# vim: ft=i3config
+bar {
+     status_command i3status
+     position top
+     font pango:DejaVu Sans Mono 10
+
+     bindsym button2 exec --no-startup-id pavucontrol
+     bindsym button3 exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+     bindsym button4 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+     bindsym button5 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+}
