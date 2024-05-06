@@ -7,5 +7,4 @@ if [[ -r ~/.config/kitty/current-theme.conf ]] ; then
 	sed -i '/^\*cursor:/d' ~/.config/Xresources.theme
 	xrdb -merge ~/.config/Xresources.theme
 	i3-msg reload
-	~/.config/polybar/launch.sh &>/dev/null
 fi
