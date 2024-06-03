@@ -168,7 +168,7 @@ for_window [class="Navigator" title=".*- Tor Browser"] floating enable, border n
 for_window [class="torbrowser-launcher"] floating enable, border none, move position center
 for_window [class="Spotify"] floating enable
 for_window [class="GParted"] floating enable
-for_window [class="Pavucontrol"] floating enable, move position 30 px 30 px
+for_window [class="(?i)Pavucontrol"] floating enable, move position 50 px 50 px
 for_window [class="Pinentry"] floating enable
 for_window [class="URxvt|kitty" instance="floating"] floating enable, resize set 800px 600px, move position center
 for_window [class="Steam" title="Friends List"] floating enable
