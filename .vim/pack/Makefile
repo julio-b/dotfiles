@@ -1,6 +1,5 @@
 start := \
 	https://github.com/junegunn/vim-easy-align.git \
-	https://github.com/tpope/vim-commentary.git \
 	https://github.com/mbbill/undotree.git \
 	https://github.com/tpope/vim-fugitive.git \
 	https://github.com/tpope/vim-rhubarb.git \
