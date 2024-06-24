@@ -4,10 +4,10 @@ start := \
 	https://github.com/tpope/vim-fugitive.git \
 	https://github.com/tpope/vim-rhubarb.git \
 	https://github.com/junegunn/fzf.vim.git \
-	https://github.com/yegappan/lsp.git \
 	https://github.com/lervag/vimtex.git \
 
 opt := \
+	https://github.com/yegappan/lsp.git \
 
 colorscheme_start := \
 	https://github.com/vim/colorschemes.git

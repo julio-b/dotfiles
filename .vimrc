@@ -47,6 +47,7 @@ endif
 packadd! editorconfig
 packadd! matchit
 packadd! comment
+packadd lsp
 
 " Prevent loading of some default plugins
 let g:loaded_vimballPlugin    = 1 | let g:loaded_vimball = 1
