@@ -2,6 +2,10 @@ let $BAT_THEME = 'ansi'
 let $DELTA_FEATURES='+light-theme'
 "let $DELTA_FEATURES='+diff-highlight'
 
+let g:fzf_vim = {}
+let g:fzf_vim.preview_window = ['hidden,right,50%,<70(up,40%)', 'Ctrl-p']
+let g:fzf_vim.grep_multi_line = 0
+
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
