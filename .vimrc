@@ -26,6 +26,7 @@ set showbreak=⤷\
 set cpoptions+=n$
 set scrolloff=0
 set formatoptions+=j1  " :h fo-1
+set clipboard-=autoselect
 
 set hlsearch incsearch ignorecase smartcase
 set ttimeout ttimeoutlen=20
