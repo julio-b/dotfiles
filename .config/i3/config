@@ -132,7 +132,7 @@ bindsym XF86Explorer         exec --no-startup-id "$irc-cmd"; workspace IRC
 bindsym $mod+F1              exec --no-startup-id "$irc-cmd"; workspace IRC
 
 set $irc-cmd i3-msg -q '[con_mark=__i3__irc] mark __i3__irc' &>/dev/null \
-             || kitty --name IRC -e bash -i -c '/usr/bin/catgirl sojulibera -w $(pass irc/soju |head -n1)'
+             || kitty --name IRC -e /usr/bin/senpai
 
 
 default_border normal 3
