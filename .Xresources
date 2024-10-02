@@ -60,4 +60,3 @@ IRC*bell-command:           paplay /usr/share/sounds/freedesktop/stereo/complete
 IRC*mapAlert:               true
 
 #include "/home/ju/.config/Xresources.theme"
-! vim:ft=xdefaults
