@@ -15,6 +15,8 @@
 	la = log --all --pretty=la
 	ls = log --stat
 	logs = log --stat
+	lo = log --oneline
+	lr = log --pretty=reference
 	cgrep = log --pickaxe-all -G
 	ce = config --global -e
 	alias = config --get-regexp 'alias.'
