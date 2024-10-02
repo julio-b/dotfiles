@@ -59,4 +59,18 @@ IRC*url-launcher:           /usr/bin/tor-browser-en
 IRC*bell-command:           paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 IRC*mapAlert:               true
 
+*VT100*bellIsUrgent: true
+*VT100*VisualBell: true
+*VT100*saveLines: 9000
+*VT100*renderFont: default
+*VT100*faceName: monospace
+*VT100*faceSize: 10
+*VT100*translations:      #override \n\
+		Ctrl Shift <Key> c: copy-selection(CLIPBOARD) \n\
+		Ctrl Shift <Key> v: insert-selection(CLIPBOARD, CUT_BUFFER0) \n\
+		Ctrl Shift <Key> s: insert-selection(SELECT, CUT_BUFFER0) \n\
+		Ctrl <Key> 0:       set-vt-font(d) \n\
+		Ctrl <Key> +:       larger-vt-font() \n\
+		Ctrl <Key> -:       smaller-vt-font()
+
 #include "/home/ju/.config/Xresources.theme"
