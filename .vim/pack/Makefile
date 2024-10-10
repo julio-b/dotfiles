@@ -52,7 +52,7 @@ log:
 	@find . -mindepth 3 -maxdepth 3 -type d -exec bash -c '[[ $$(git -C "$$0" rev-list --count HEAD@{yesterday}..HEAD) -gt 0 ]] && echo "$$0"' '{}' \; \
 		| fzf --exit-0 --disabled --reverse --height=~100$(PERCENT) --preview-window "down,85$(PERCENT),hidden" \
 			--preview "git -C {} log --pretty=tree -p --reverse --color=always HEAD@{yesterday}..HEAD" \
-			--bind 'enter:execute(git -C {} log --pretty=tree -p --reverse HEAD@{yesterday}..HEAD)' \
+			--bind 'enter:execute(GIT_PAGER="less -+F" git -C {} log --pretty=tree -p --reverse HEAD@{yesterday}..HEAD)' \
 			--bind ctrl-q:accept,ctrl-v:toggle-preview \
 			--bind ctrl-y:preview-up,ctrl-e:preview-down \
 			--bind ctrl-b:preview-page-up,ctrl-f:preview-page-down \
