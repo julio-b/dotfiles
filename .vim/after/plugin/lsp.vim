@@ -16,6 +16,33 @@ var lspServers = [
 		syncInit: true,
 	},
 	{
+		name: 'vscode-html-server',
+		filetype: ['html'],
+		path: '/usr/bin/vscode-html-language-server',
+		args: ['--stdio'],
+		initializationOptions: {
+			settings: {
+				html: {
+					format: {
+						templating: true,
+						wrapLineLength: 120,
+						wrapAttributes: 'auto',
+					},
+					hover: {
+						documentation: true,
+						references: true,
+					},
+				},
+			}
+		}
+	},
+	{
+		name: 'vscode-eslint-server',
+		filetype: ['javascript'],
+		path: '/usr/bin/vscode-eslint-language-server',
+		args: ['--stdio'],
+	},
+	{
 		name: 'bashls',
 		filetype: ['sh', 'bash'],
 		path: '/usr/bin/bash-language-server',
