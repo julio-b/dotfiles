@@ -5,6 +5,7 @@ var lspServers = [
 		name: 'clang',
 		filetype: ['c', 'cpp'],
 		path: '/usr/bin/clangd',
+		runUnlessSearch: ['.git/DISABLE_CLANGD'],
 		args: ['--background-index', '--clang-tidy']
 	},
 	{
