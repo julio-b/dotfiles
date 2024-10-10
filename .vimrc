@@ -32,6 +32,7 @@ set hlsearch incsearch ignorecase smartcase
 set ttimeout ttimeoutlen=20
 
 set wildmode=list:longest,full
+set wildignore=*.o
 
 set nospell spelllang=en,el
 set keymap=greek_utf-8 iminsert=0 imsearch=0 "TODO try ims=-1
