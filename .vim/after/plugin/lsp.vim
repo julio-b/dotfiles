@@ -57,29 +57,40 @@ var lspServers = [
 var lspOpts = {
 	completionMatcher: 'fuzzy',
 	showDiagWithVirtualText: true,
-	#showDiagOnStatusLine: true,
-	#showInlayHints: true,
+	showDiagOnStatusLine: true,
+	showInlayHints: true,
+	diagVirtualTextAlign: 'after',
+	showSignature: true,
 	}
 
 g:LspAddServer(lspServers)
 g:LspOptionsSet(lspOpts)
 
 def SetupLspMaps()
-	nnoremap <buffer> <Leader>ca <cmd>LspCodeAction<CR>
-	nnoremap <buffer> <Leader>gd <cmd>LspGotoDeclaration<CR>
-	nnoremap <buffer> <Leader>gD <cmd>LspGotoDefinition<CR>
+	nnoremap <buffer> <Leader>gD <cmd>LspGotoDeclaration<CR>
+	nnoremap <buffer> <Leader>gd <cmd>LspGotoDefinition<CR>
 	nnoremap <buffer> <Leader>gi <cmd>LspGotoImpl<CR>
 	nnoremap <buffer> <Leader>gr <cmd>LspShowReferences<CR>
-	nnoremap <buffer> <Leader>rn <cmd>LspRename<CR>
-	nnoremap <buffer> [e         <cmd>LspDiagPrev<CR>
-	nnoremap <buffer> ]e         <cmd>LspDiagNext<CR>
-	nnoremap <buffer> [E         <cmd>LspDiagFirst<CR>
-	nnoremap <buffer> ]E         <cmd>LspDiagLast<CR>
-	nnoremap <buffer> <leader>e  <cmd>LspDiagHere<CR>
-	nnoremap <buffer> <leader>E  <cmd>LspDiagShow<CR>
 
+	nnoremap <buffer> <Leader>pD <cmd>LspPeekDeclaration<CR>
+	nnoremap <buffer> <Leader>pd <cmd>LspPeekDefinition<CR>
+	nnoremap <buffer> <Leader>pi <cmd>LspPeekImpl<CR>
+	nnoremap <buffer> <Leader>pr <cmd>LspPeekReferences<CR>
+
+	nnoremap <buffer> <Leader>rn <cmd>LspRename<CR>
+	nnoremap <buffer> <Leader>ca <cmd>LspCodeAction<CR>
+
+	nnoremap <buffer> [e         <cmd>LspDiag prev<CR>
+	nnoremap <buffer> ]e         <cmd>LspDiag next<CR>
+	nnoremap <buffer> [E         <cmd>LspDiag first<CR>
+	nnoremap <buffer> ]E         <cmd>LspDiag last<CR>
+	nnoremap <buffer> <leader>e  <cmd>LspDiag here<CR>
+	nnoremap <buffer> <leader>E  <cmd>LspDiag show<CR>
+
+	nnoremap <buffer> <leader>sl call lsp.StopAllServers()
 	setlocal tagfunc=lsp#lsp#TagFunc
 	setlocal formatexpr=lsp#lsp#FormatExpr()
+	setlocal keywordprg=:LspHover
 enddef
 
 autocmd User LspAttached SetupLspMaps()
