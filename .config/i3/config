@@ -183,7 +183,7 @@ for_window [title="Event Tester"] floating enable
 for_window [title="About Mozilla Firefox"] floating enable
 
 #Autostart
-exec --no-startup-id picom --config /dev/null --backend glx --vsync
+exec --no-startup-id picom
 exec --no-startup-id xss-lock -- locker
 # start dropdown term only if its not already running
 exec_always --no-startup-id "i3-msg -q '[con_mark=__i3__dropdown] mark __i3__dropdown' &>/dev/null || kitty --name dropdown"
