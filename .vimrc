@@ -30,6 +30,7 @@ set clipboard-=autoselect
 
 set hlsearch incsearch ignorecase smartcase
 set ttimeout ttimeoutlen=20
+set history=1000
 
 set wildmode=list:longest,full
 set wildignore=*.o
