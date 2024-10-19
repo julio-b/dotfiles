@@ -65,4 +65,6 @@ nnoremap <A-,> <cmd>execute "set imi="..(&imi== 1 ? '0' : '1').." imi?"<CR>
 " https://github.com/chrisbra/vim_dotfiles/blob/03f29cf1b6c7643788bc43dc35c788df753b6356/mapping.vim#L28
 nnoremap <leader>m  :<c-u><c-r>='let @'.. v:register ..' = '.. string(getreg(v:register))<cr><c-f><left>
 
+" print the syntax stack under the cursor: :h synstack()
+nnoremap <F9> <cmd>echo synstack(line("."), col("."))->map({_, id -> synIDattr(id, "name")})<CR>
 
