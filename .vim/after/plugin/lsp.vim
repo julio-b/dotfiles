@@ -61,10 +61,11 @@ var lspOpts = {
 	showInlayHints: true,
 	diagVirtualTextAlign: 'after',
 	showSignature: true,
+	ignoreMissingServer: true,
 	}
 
-g:LspAddServer(lspServers)
 g:LspOptionsSet(lspOpts)
+g:LspAddServer(lspServers)
 
 def SetupLspMaps()
 	nnoremap <buffer> <Leader>gD <cmd>LspGotoDeclaration<CR>
