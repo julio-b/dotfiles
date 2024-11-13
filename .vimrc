@@ -55,7 +55,7 @@ packadd lsp
 " Prevent loading of some default plugins
 let g:loaded_vimballPlugin    = 1 | let g:loaded_vimball = 1
 let g:loaded_getscriptPlugin  = 1 | let g:loaded_getscript = 1
-let g:loaded_spellfile_plugin = 1 | let g:loaded_logiPat = 1
+let g:loaded_logiPat = 1
 
 let g:termdebug_config = {}
 let g:termdebug_config['variables_window'] = 1
