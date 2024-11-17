@@ -58,7 +58,7 @@ let g:loaded_getscriptPlugin  = 1 | let g:loaded_getscript = 1
 let g:loaded_logiPat = 1
 
 let g:termdebug_config = {}
-let g:termdebug_config['variables_window'] = 1
+let g:termdebug_config['variables_window'] = v:true
 let g:termdebug_config['variables_window_height'] = 4
 let g:termdebug_config['wide'] = 1
 
